@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# Prompt user with dmenu before using a command
+
+source environment-colors
+source ~/.config/bar/config
+
+label=$1
+shift
+
+[[ $(echo -e "No\nYes" | dmenu -fn "$font" \
+	-w "$width" \
+	-h "$height" \
+	-x "$xoffset" \
+	-y "$yoffset" \
+	-nf "$FOREGROUND" \
+	-nb "$BACKGROUND" \
+	-sf "$FOREGROUND" \
+	-sb "$DARKRED" \
+	-i -p "$label") == "Yes" ]] && $@

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# Change brightness and print, send update to bar fifo
+
+bri_path="/sys/class/backlight/intel_backlight"
+bri="$(< "${bri_path}/brightness")"
+max="$(< "${bri_path}/max_brightness")"
+
+if [[ $# -eq 1 ]]; then
+	((step=max/10))
+	case "$1" in
+		-i|-inc|up)   ((bri=bri+step)) ;;
+		-d|-dec|down) ((bri=bri-step)) ;;
+	esac
+
+	((bri > max)) && bri="$max"
+	((bri < 1))   && bri="1"
+
+	printf '%s' "$bri" > "${bri_path}/brightness"
+fi
+
+source ~/.config/bar/config
+
+((per=bri*100/max))
+
+((step=per/34))
+icon="${bri_icons[$step]}"
+
+echo "BRIGHTNESS$icon $per%" > "$fifo" &

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Run dmenu with bar configuration and colors
+
+source environment-colors
+source ~/.config/bar/config
+
+dmenu_run -fn "$font" \
+          -nf "$FOREGROUND" \
+          -nb "$BACKGROUND" \
+          -sf "$FOREGROUND" \
+          -sb "$DARKRED" \
+          -w "$width" \
+          -h "$height" \
+          -x "$xoffset" \
+          -y "$yoffset"

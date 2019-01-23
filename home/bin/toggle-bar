@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# toggle visibility of bar
+
+pids=$(ps -aux | awk '/bar/&&!/toggle|awk|nvim/ {print $2}')
+nlines=$(echo "$pids" | wc -l)
+
+if [ $nlines -gt 1 ]; then
+	for pid in $pids; do
+		kill -9 $pid
+	done
+	bspc config top_padding 0
+else
+	bar &
+fi

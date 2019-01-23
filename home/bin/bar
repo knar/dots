@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# clean bar, brutha
+
+name=bar
+
+if xdo id -a "$name" > /dev/null; then
+	echo 'error: bar is already running' >&2
+	exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+source ~/.config/bar/config
+source ~/.config/bar/icons
+
+[[ -f "$fifo" ]] && rm "$fifo"
+mkfifo "$fifo"
+
+bspc config top_padding "$wmtoppad"
+
+for file in ~/bin/lemons/*; do
+	source "$file"
+done
+
+for func in wks ttl ntw vol bri bat clk; do
+	"$func" > "$fifo" &
+done
+
+format() {
+	while read -r event; do
+		case $event in
+			WORKSPACES*) wks=${event:10} ;;
+			TITLE*)      ttl=${event:5} ;;
+			NETWORK*)    ntw=${event:7} ;;
+			VOLUME*)     vol=${event:6} ;;
+			BRIGHTNESS*) bri=${event:10} ;;
+			BATTERY*)    bat=${event:7} ;;
+			CLOCK*)      clk=${event:5} ;;
+		esac
+
+		printf '%b\n' "%{l}$wks  $ttl%{r}$ntw  $vol  $bri  $bat  $clk "
+	done
+}
+
+cat "$fifo" | format | lemonbar -n "$name" \
+	-g "${width}x$height+$xoffset+$yoffset" \
+	-u "$underlineheight" \
+	-o "$textoffset" \
+	-f "$font" \
+	-f "$iconfont" \
+	-F "$foreground" \
+	-B "$background"
+
+xdo lower -m -a "$name"
+
+wait

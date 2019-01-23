@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Change volume, send upbade to bar fifo
+
+case "$1" in
+	-i|-inc|-up)    pamixer -i 5 ;;
+	-d|-dec|-down)  pamixer -d 5 ;;
+	-m|-mute)       pamixer -t ;;
+esac
+
+source ~/.config/bar/config
+
+var=$(pamixer --get-volume)
+muted=$(pamixer --get-mute)
+
+case "$muted" in
+	true) icon="$vol_muted_icon" ;;
+	false)
+		((step=var/34))
+		icon="${vol_icons[$step]}"
+		;;
+esac
+
+echo "VOLUME$icon $var%" > "$fifo" &

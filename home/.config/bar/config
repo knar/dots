@@ -1,0 +1,19 @@
+# bar config
+
+width=1920
+height=40
+xoffset=0
+yoffset=0
+underlineheight=3
+textoffset=0
+((wmtoppad=height+yoffset))
+
+fifo=/tmp/bar-fifo
+
+font="monospace:size=14"
+
+source environment-colors
+background=$BACKGROUND
+foreground=$FOREGROUND
+
+# vim: ft=sh

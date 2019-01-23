@@ -1,0 +1,53 @@
+# bar icons
+
+iconfont="Material Design Icons:size=15"
+
+source environment-colors
+
+ntw_wifi_good="%{F$GREEN}\uf924%{F-}"
+ntw_wifi_problem="%{F$RED}\uf92a%{F-}"
+ntw_wifi_connecting="%{F$YELLOW}\uf922%{F-}"
+ntw_wifi_disconnected="%{F$DARKRED}\uf92d%{F-}"
+
+ntw_wire_good="%{F$GREEN}\uf318%{F-}"
+ntw_wire_problem="%{F$RED}\uf31a%{F-}"
+ntw_wire_connecting="%{F$YELLOW}\uf31a%{F-}"
+ntw_wire_disconnected="%{F$DARKRED}\uf319%{F-}"
+
+vol_icons=( '\uf57f' '\uf580' '\uf57e' )
+
+vol_muted_icon="%{F$RED}\uf75e%{F-}"
+
+bri_icons=( '\uf0de' '\uf0df' '\uf0e0' )
+
+bat_icons=(
+	"%{F$DARKRED}\uf08e%{F-}"
+	"%{F$RED}\uf07a%{F-}"
+	"%{F$DARKYELLOW}\uf07b%{F-}"
+	'\uf07c'
+	'\uf07d'
+	'\uf07e'
+	'\uf07f'
+	'\uf080'    
+	'\uf081'        
+	'\uf082'        
+	'\uf079' 
+)
+
+batc_icons=(
+	"%{F$DARKRED}\uf89e%{F-}"
+	"%{F$RED}\uf89b%{F-}"
+	"%{F$DARKYELLOW}\uf086%{F-}"
+	'\uf087'
+	'\uf088'
+	'\uf89c'
+	'\uf089'
+	'\uf89d'
+	'\uf08a'
+	'\uf08b'
+	'\uf085'
+)
+
+clk_icon='\uf0f0'
+
+# vim: ft=sh

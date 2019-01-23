@@ -1,0 +1,22 @@
+#!/bin/sh 
+#
+# Grab colors from Xresources
+
+export FOREGROUND=$(xrdb -query | grep "foreground:" | awk '{print $NF}')
+export BACKGROUND=$(xrdb -query | grep "background:" | grep -v "URxvt" | awk '{print $NF}')
+export DARKBLACK=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
+export DARKRED=$(xrdb -query | grep 'color1:'| awk '{print $NF}')
+export DARKGREEN=$(xrdb -query | grep 'color2:'| awk '{print $NF}')
+export DARKYELLOW=$(xrdb -query | grep 'color3:'| awk '{print $NF}')
+export DARKBLUE=$(xrdb -query | grep 'color4:'| awk '{print $NF}')
+export DARKMAGENTA=$(xrdb -query | grep 'color5:'| awk '{print $NF}')
+export DARKCYAN=$(xrdb -query | grep 'color6:'| awk '{print $NF}')
+export DARKWHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
+export BLACK=$(xrdb -query | grep 'color8:'| awk '{print $NF}')
+export RED=$(xrdb -query | grep 'color9:'| awk '{print $NF}')
+export GREEN=$(xrdb -query | grep 'color10:'| awk '{print $NF}')
+export YELLOW=$(xrdb -query | grep 'color11:'| awk '{print $NF}')
+export BLUE=$(xrdb -query | grep 'color12:'| awk '{print $NF}')
+export MAGENTA=$(xrdb -query | grep 'color13:'| awk '{print $NF}')
+export CYAN=$(xrdb -query | grep 'color14:'| awk '{print $NF}')
+export WHITE=$(xrdb -query | grep 'color15:'| awk '{print $NF}')

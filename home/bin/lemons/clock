@@ -1,0 +1,13 @@
+# sourced by bar
+
+clk() {
+	while true; do
+		printf -v datetime '%(%a %d %b, %H:%M)T\n' '-1'
+		
+		echo "CLOCK$clk_icon $datetime"
+
+		sleep 30
+	done
+}
+
+# vim: ft=sh

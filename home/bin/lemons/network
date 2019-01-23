@@ -1,0 +1,40 @@
+# sourced by bar
+
+ntw() {
+	while true; do
+		state=$(nmcli -g STATE g)
+		ivity=$(nmcli -g CONNECTIVITY g)
+		types=($(nmcli -g TYPE d))
+		conns=($(nmcli -g CONNECTION d))
+
+		[[ $state != "disconnected" && $ivity == "limited" ]] && state=$ivity
+
+		case ${types[0]} in
+			wifi)
+				case $state in
+					connected)    icon=$ntw_wifi_good ;;
+					limited)      icon=$ntw_wifi_problem ;;
+					connecting*)  icon=$ntw_wifi_connecting ;;
+					disconnected) icon=$ntw_wifi_disconnected ;;
+				esac
+				;;
+			ethernet)
+				case $state in
+					connected)    icon=$ntw_wire_good ;;
+					limited)      icon=$ntw_wire_problem ;;
+					connecting*)  icon=$ntw_wire_connecting ;;
+					disconnected) icon=$ntw_wire_disconnected ;;
+				esac
+				;;
+		esac
+
+		conn=${conns[0]}
+		[[ $conn == "" ]] && conn='Disconnected'
+
+		echo "NETWORK$icon $conn"
+
+		sleep 2
+	done
+}
+
+# vim: ft=sh

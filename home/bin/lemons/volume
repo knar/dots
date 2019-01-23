@@ -1,0 +1,22 @@
+# sourced by bar
+
+vol() {
+	while true; do
+		var=$(pamixer --get-volume)
+		muted=$(pamixer --get-mute)
+
+		case $muted in
+			true) icon="$vol_muted_icon" ;;
+			false)
+				((step=var/34))
+				icon="${vol_icons[$step]}"
+				;;
+		esac
+
+		echo "VOLUME$icon $var%"
+
+		sleep 5
+	done
+}
+
+# vim: ft=sh
