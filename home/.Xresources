@@ -1,4 +1,4 @@
-#include ".config/xcolors/strong"
+#include ".config/xcolors/lowkey"
 
 URxvt.font: xft:monospace:style=Regular:size=14
 URxvt.boldFont: xft:monospace:style=Regular:size=14
