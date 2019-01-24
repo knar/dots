@@ -9,6 +9,7 @@ case "$1" in
 esac
 
 source ~/.config/bar/config
+source ~/.config/bar/icons
 
 var=$(pamixer --get-volume)
 muted=$(pamixer --get-mute)

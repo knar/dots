@@ -4,7 +4,7 @@ width=1920
 height=40
 xoffset=0
 yoffset=0
-underlineheight=3
+underlineheight=2
 textoffset=0
 ((wmtoppad=height+yoffset))
 

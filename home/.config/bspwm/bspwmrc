@@ -1,32 +1,40 @@
 #!/bin/sh
 #
-# BSPWM Configuration
+# bspwm config
 
-# Monitor workspaces
+# -----
+# Workspaces, per monitor
+# -
+
 num_displays=$(xrandr -q | grep " connected" | wc -l)
 case "$num_displays" in
 	1)
 		bspc monitor -d 1 2 3 4 5
-	;;
-	
+		;;	
 	2)
 		bspc monitor ^1 -d 1 2 3 4 5
 		bspc monitor ^2 -d 6 7 8 9 0
-	;;
+		;;
 esac
 
-# Config
+# -----
+# Configuration
+# -
+
 bspc config focus_follows_pointer true
-bspc config border_width             3
+bspc config border_width             4
 bspc config window_gap              16
 bspc config split_ratio           0.50
-bspc config single_monocle        true 
+bspc config single_monocle        true
 bspc config borderless_monocle    true
 bspc config gapless_monocle       true
 
+# -----
 # Color scheme
+# -
+
 source environment-colors
-bspc config focused_border_color "$DARKRED"
-bspc config normal_border_color    "$BLACK"
-bspc config active_border_color    "$BLACK"
-bspc config presel_feedback_color  "$GREEN"
+bspc config focused_border_color  "$DARKRED"
+bspc config normal_border_color   "$BLACK"
+bspc config active_border_color   "$BLACK"
+bspc config presel_feedback_color "$WHITE"

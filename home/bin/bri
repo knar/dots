@@ -20,6 +20,7 @@ if [[ $# -eq 1 ]]; then
 fi
 
 source ~/.config/bar/config
+source ~/.config/bar/icons
 
 ((per=bri*100/max))
 

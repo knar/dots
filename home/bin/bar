@@ -14,7 +14,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 source ~/.config/bar/config
 source ~/.config/bar/icons
 
-[[ -f "$fifo" ]] && rm "$fifo"
+[ -e "$fifo" ] && rm "$fifo"
 mkfifo "$fifo"
 
 bspc config top_padding "$wmtoppad"
@@ -27,7 +27,7 @@ for func in wks ttl ntw vol bri bat clk; do
 	"$func" > "$fifo" &
 done
 
-format() {
+cat "$fifo" | \
 	while read -r event; do
 		case $event in
 			WORKSPACES*) wks=${event:10} ;;
@@ -40,18 +40,22 @@ format() {
 		esac
 
 		printf '%b\n' "%{l}$wks  $ttl%{r}$ntw  $vol  $bri  $bat  $clk "
-	done
-}
+	done | \
+		lemonbar -n "$name" \
+			-g "${width}x$height+$xoffset+$yoffset" \
+			-u "$underlineheight" \
+			-o "$textoffset" \
+			-f "$font" \
+			-f "$iconfont" \
+			-F "$foreground" \
+			-B "$background" &
 
-cat "$fifo" | format | lemonbar -n "$name" \
-	-g "${width}x$height+$xoffset+$yoffset" \
-	-u "$underlineheight" \
-	-o "$textoffset" \
-	-f "$font" \
-	-f "$iconfont" \
-	-F "$foreground" \
-	-B "$background"
+# proper fullscreen behavior
+until bar_id=$(xdo id -a "$name"); do
+	sleep 0.001
+done
 
-xdo lower -m -a "$name"
+xdo below -t $(xdo id -n root) $bar_id
 
+# don't end the proceess 
 wait
