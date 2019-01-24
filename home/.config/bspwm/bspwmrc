@@ -34,7 +34,7 @@ bspc config gapless_monocle       true
 # -
 
 source environment-colors
-bspc config focused_border_color  "$DARKRED"
+bspc config focused_border_color  "$DARKBLUE"
 bspc config normal_border_color   "$BLACK"
 bspc config active_border_color   "$BLACK"
 bspc config presel_feedback_color "$WHITE"

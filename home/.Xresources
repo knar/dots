@@ -1,15 +1,7 @@
-#include ".config/xcolors/lowkey"
+! ~/.Xresources
 
-URxvt.font: xft:monospace:style=Regular:size=14
-URxvt.boldFont: xft:monospace:style=Regular:size=14
-URxvt.letterSpace: 0
-URxvt.internalBorder: 16
-URxvt*scrollBar: false
+#include ".config/xres/urxvt"
+#include ".config/xres/fonts"
+#include ".config/xres/colors/lowkey"
 
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
-Xft.dpi: 96
+! vim: ft=xdefaults

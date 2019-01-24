@@ -1,5 +1,3 @@
-# sourced by bar
-
 ntw() {
 	while true; do
 		state=$(nmcli -g STATE g)

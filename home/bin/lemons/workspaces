@@ -1,20 +1,14 @@
-# sourced by bar
-
 wks() {
-	foc='\uf764'
-	occ='\uf43e'
-	fre='\uf43d'
-
 	bspc subscribe |
 		while read -r event; do
 			IFS=:; set -- $event
 			
-			dots=
+			dots=""
 			while test "$1"; do
 				case $1 in
-					[OFU]*) dots="$dots $foc" ;;
-					[ou]*)  dots="$dots $occ" ;;
-					f*)     dots="$dots $fre" ;; 
+					[OFU]*) dots="$dots ${wks_icons[0]}" ;;
+					[ou]*)  dots="$dots ${wks_icons[1]}" ;;
+					f*)     dots="$dots ${wks_icons[2]}" ;; 
 				esac
 
 				shift

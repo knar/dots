@@ -1,5 +1,3 @@
-# sourced by bar
-
 vol() {
 	while true; do
 		percent=$(pamixer --get-volume)

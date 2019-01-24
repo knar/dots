@@ -1,5 +1,3 @@
-# sourced by bar
-
 clk() {
 	while true; do
 		printf -v datetime '%(%a %d %b, %H:%M)T\n' '-1'

@@ -16,5 +16,5 @@ shift
 	-nf "$FOREGROUND" \
 	-nb "$BACKGROUND" \
 	-sf "$FOREGROUND" \
-	-sb "$DARKRED" \
+	-sb "$DARKBLUE" \
 	-i -p "$label") == "Yes" ]] && $@
