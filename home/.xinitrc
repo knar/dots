@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# .xinitrc
+# ~/.xinitrc
 
 xset r rate 170 20
 xset m 1/1

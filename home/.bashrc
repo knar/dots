@@ -1,6 +1,6 @@
 # ~/.bashrc
 
-# [[ $- != *i* ]] && return
+[[ $- != *i* ]] && return
 
 # Prompt
 PS1='\[\e[92m\]\w\[\e[33m\] > \[\e[0m\]'
