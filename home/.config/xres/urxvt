@@ -1,5 +1,5 @@
-URxvt.font: xft:monospace:style=Regular:size=14
-URxvt.boldFont: xft:monospace:style=Regular:size=14
+URxvt.font: xft:monospace:style=Regular:size=13
+URxvt.boldFont: xft:monospace:style=Regular:size=13
 URxvt.letterSpace: 0
 URxvt.internalBorder: 16
 URxvt*scrollBar: false

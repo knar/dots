@@ -10,7 +10,7 @@ textoffset=0
 
 fifo=/tmp/bar-fifo
 
-font="monospace:size=14"
+font="monospace:size=13"
 
 source environment-colors
 background=$BACKGROUND
