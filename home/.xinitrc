@@ -6,6 +6,7 @@ xset r rate 170 20
 xset m 1/1
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
+tput smkx
 xrdb ~/.Xresources
 
 sxhkd &
