@@ -8,7 +8,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.npm-global/bin
 export BROWSER="chromium"
 export EDITOR="nvim"
-export TERMINAL="urxvt"
+export TERMINAL="st"
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \
