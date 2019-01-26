@@ -27,6 +27,8 @@ for func in wks ttl ntw vol clk; do
 	"$func" > "$fifo" &
 done
 
+num_disp=$(xrandr -q | grep " connected" | wc -l)
+
 cat "$fifo" | \
 	while read -r event; do
 		case $event in
@@ -38,11 +40,16 @@ cat "$fifo" | \
 			BATTERY*)    bat=${event:7} ;;
 			CLOCK*)      clk=${event:5} ;;
 		esac
+	
+		bar=""
+		for ((i=0;i<$num_disp;i++)); do
+			bar="$bar%{S$i}%{l}$wks  $ttl%{r}$ntw  $vol  $clk "
+		done
 
-		printf '%b\n' "%{l}$wks  $ttl%{r}$ntw  $vol  $clk "
+		printf '%b\n' "$bar"
 	done | \
 		lemonbar -n "$name" \
-			-g "${width}x$height+$xoffset+$yoffset" \
+			-g "x$height" \
 			-u "$underlineheight" \
 			-o "$textoffset" \
 			-f "$font" \
