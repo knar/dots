@@ -2,7 +2,7 @@
 #
 # ~/.xinitrc
 
-xset r rate 170 20
+xset r rate 170 40
 xset m 1/1
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape

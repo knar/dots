@@ -5,6 +5,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export GOPATH=$HOME/dev/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/dev/fff
 export PATH=$PATH:$HOME/.npm-global/bin
 export BROWSER="chromium"
 export EDITOR="nvim"
