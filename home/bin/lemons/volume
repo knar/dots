@@ -1,20 +1,23 @@
 vol() {
-	while true; do
-		percent=$(pamixer --get-volume)
-		muted=$(pamixer --get-mute)
+	{ echo 'sink #0'; pactl subscribe 2> /dev/null; } |
+		while read -r event; do
+			case $event in
+				*'sink #0'*)
+					percent=$(pamixer --get-volume)
+					muted=$(pamixer --get-mute)
 
-		case $muted in
-			true) icon="$vol_muted_icon" ;;
-			false)
-				((step=percent/34))
-				icon="${vol_icons[$step]}"
-				;;
-		esac
+					case $muted in
+						true) icon="$vol_muted_icon" ;;
+						false)
+							((step=percent/34))
+							icon="${vol_icons[$step]}"
+							;;
+					esac
 
-		echo "VOLUME$icon $percent%"
-
-		sleep 5
-	done
+					echo "VOLUME$icon $percent%"
+					;;
+			esac
+		done
 }
 
 # vim: ft=sh
