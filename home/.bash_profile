@@ -11,6 +11,11 @@ export BROWSER="chromium"
 export EDITOR="nvim"
 export TERMINAL="st"
 
+# FFF
+export FFF_OPENER="xdg-open"
+export FFF_CD_FILE=~/.cache/fff/fff_d
+export FFF_KEY_SHELL="off"  
+
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \
     exec startx -- -keeptty > ~/.xorg.log 2>&1

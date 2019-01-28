@@ -15,9 +15,9 @@ set list!
 noremap <F3> :set list!<CR>
 
 
-"nnoremap f :F<CR>
-"let g:fff#split = "30vnew"
-"let g:fff#split_direction = "nosplitbelow nosplitright"
+nnoremap f :F<CR>
+let g:fff#split = "20vnew"
+let g:fff#split_direction = "nosplitbelow nosplitright"
 
 call plug#begin('~/.local/share/nvim/plugged')
 
