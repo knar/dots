@@ -23,13 +23,13 @@ super + Escape
 # -
 
 XF86Audio{Mute,LowerVolume,RaiseVolume}
-	vol {-m,-d,-i}
+	vol {m,-,+}
 
 XF86AudioMicMute
 	pactl set-source-mute 1 toggle
 
 XF86MonBrightness{Down,Up}
-	bri {-d,-i}
+	bri {-,+}
 
 {_,super + }Print
 	screenshot {_,-s}

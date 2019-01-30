@@ -9,8 +9,8 @@ max="$(< "${bri_path}/max_brightness")"
 if [[ $# -eq 1 ]]; then
 	((step=max/10))
 	case "$1" in
-		-i|-inc|up)   ((bri=bri+step)) ;;
-		-d|-dec|down) ((bri=bri-step)) ;;
+		i|inc|up|+)   ((bri=bri+step)) ;;
+		d|dec|down|-) ((bri=bri-step)) ;;
 	esac
 
 	((bri > max)) && bri="$max"

@@ -16,6 +16,8 @@ export FFF_OPENER="xdg-open"
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_KEY_SHELL="off"  
 
+export FFF_COL1=4
+
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \
     exec startx -- -keeptty > ~/.xorg.log 2>&1
