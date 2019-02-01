@@ -1,5 +1,5 @@
 ttl() {
-	xtitle -t 90 -sf 'TITLE%s\n'
+	xtitle -t 90 -sf 'T%s\n'
 }
 
 # vim: ft=sh

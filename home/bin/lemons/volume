@@ -7,14 +7,16 @@ vol() {
 					muted=$(pamixer --get-mute)
 
 					case $muted in
-						true) icon="$vol_muted_icon" ;;
+						true)
+							icon="$vol_muted_icon"
+							;;
 						false)
 							((step=percent/34))
 							icon="${vol_icons[$step]}"
 							;;
 					esac
 
-					echo "VOLUME$icon $percent%"
+					echo "V$icon $percent%"
 					;;
 			esac
 		done

@@ -1,17 +1,16 @@
 # sourced by bar
 
 bri() {
-	path=/sys/class/backlight/intel_backlight
+	while true; do
+		per=$(< ~/.cache/bri)
+		
+		((step=per/34))	
+		icon="${bri_icons[$step]}"
 
-	val=$(< "$path/brightness")
-	max=$(< "$path/max_brightness")
-	
-	((percent=val*100/max))
-	
-	((step=percent/34))	
-	icon="${bri_icons[$step]}"
+		echo "L$icon $per%"
 
-	echo "BRIGHTNESS$icon $percent%"
+		sleep 2
+	done
 }
 
 # vim: ft=sh

@@ -29,7 +29,7 @@ ntw() {
 		conn=${conns[0]}
 		[[ $conn == "" ]] && conn='Disconnected'
 
-		echo "NETWORK$icon $conn"
+		echo "N$icon $conn"
 
 		sleep 2
 	done

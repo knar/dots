@@ -1,10 +1,10 @@
 clk() {
 	while true; do
-		printf -v datetime '%(%a %d %b, %H:%M)T\n' '-1'
+		printf -v datetime '%(%a %d %b, %H:%M:%S)T\n' '-1'
 		
-		echo "CLOCK$clk_icon $datetime"
+		echo "C$clk_icon $datetime"
 
-		sleep 30
+		sleep 1 
 	done
 }
 

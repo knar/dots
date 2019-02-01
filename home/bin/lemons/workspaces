@@ -14,7 +14,7 @@ wks() {
 				shift
 			done
 
-			echo "WORKSPACES$dots"
+			echo "W$dots"
 		done
 }
 

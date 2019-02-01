@@ -1,5 +1,4 @@
 # bar config
-
 width=1920
 height=40
 xoffset=0
@@ -7,8 +6,6 @@ yoffset=0
 underlineheight=2
 textoffset=0
 ((wmtoppad=height+yoffset))
-
-fifo=/tmp/bar-fifo
 
 font="monospace:size=13"
 

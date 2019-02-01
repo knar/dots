@@ -2,60 +2,82 @@
 #
 # clean bar, brutha
 
-name=bar
+# source and invoke lemons
+start_lemons() {
+	for file in ~/bin/lemons/*; do
+		source "$file"
+	done
 
-if xdo id -a "$name" > /dev/null; then
-	echo 'error: bar is already running' >&2
-	exit 1
-fi
+	for func in wks ttl ntw vol bri bat clk; do
+		"$func" &
+	done
+}
 
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-
-source ~/.config/bar/config
-source ~/.config/bar/icons
-
-[ -e "$fifo" ] && rm "$fifo"
-mkfifo "$fifo"
-
-bspc config top_padding "$wmtoppad"
-
-for file in ~/bin/lemons/*; do
-	source "$file"
-done
-
-for func in wks ttl ntw vol bri bat clk; do
-	"$func" > "$fifo" &
-done
-
-cat "$fifo" | \
+# format for bar from piped fifo
+format_bar() {
 	while read -r event; do
 		case $event in
-			WORKSPACES*) wks=${event:10} ;;
-			TITLE*)      ttl=${event:5} ;;
-			NETWORK*)    ntw=${event:7} ;;
-			VOLUME*)     vol=${event:6} ;;
-			BRIGHTNESS*) bri=${event:10} ;;
-			BATTERY*)    bat=${event:7} ;;
-			CLOCK*)      clk=${event:5} ;;
+			#WORKSPACES*) wks=${event:10} ;;
+			#TITLE*)      ttl=${event:5} ;;
+			#NETWORK*)    ntw=${event:7} ;;
+			#VOLUME*)     vol=${event:6} ;;
+			#BRIGHTNESS*) bri=${event:10} ;;
+			#BATTERY*)    bat=${event:7} ;;
+			#CLOCK*)      clk=${event:5} ;;
+			W*) wks=${event:1} ;;
+			T*) ttl=${event:1} ;;
+			N*) ntw=${event:1} ;;
+			V*) vol=${event:1} ;;
+			L*) bri=${event:1} ;;
+			B*) bat=${event:1} ;;
+			C*) clk=${event:1} ;;
 		esac
 
 		printf '%b\n' "%{l}$wks  $ttl%{r}$ntw  $vol  $bri  $bat  $clk "
-	done | \
-		lemonbar -n "$name" \
-			-g "${width}x$height+$xoffset+$yoffset" \
-			-u "$underlineheight" \
-			-o "$textoffset" \
-			-f "$font" \
-			-f "$iconfont" \
-			-F "$foreground" \
-			-B "$background" &
+	done
+}
 
-# proper fullscreen behavior
-until bar_id=$(xdo id -a "$name"); do
-	sleep 0.001
-done
+# draw bar from piped formatted string
+draw_bar() {
+	lemonbar -n "$name" \
+		-g "${width}x$height+$xoffset+$yoffset" \
+		-u "$underlineheight" \
+		-o "$textoffset" \
+		-f "$font" \
+		-f "$iconfont" \
+		-F "$foreground" \
+		-B "$background" &
+}
 
-xdo below -t $(xdo id -n root) $bar_id
+main() {
+	name=bar
+	
+	if xdo id -a "$name" > /dev/null; then
+		echo 'error: bar is already running' >&2
+		exit 1
+	fi
 
-# don't end the proceess 
-wait
+	# cleanup  
+	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+	
+	# source configs
+	source ~/.config/bar/config
+	source ~/.config/bar/icons
+
+	# set top padding for bar
+	bspc config top_padding "$wmtoppad"
+	
+	# bar pipe
+	start_lemons | format_bar | draw_bar
+
+	# ensure proper fullscreen behavior
+	until bar_id=$(xdo id -a "$name"); do
+		sleep 0.001
+	done
+	xdo below -t $(xdo id -n root) $bar_id
+
+	# don't end the proceess 
+	wait
+}
+
+main

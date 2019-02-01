@@ -20,7 +20,7 @@ bat() {
 			*) icon="${bat_icons[$step]}" ;;
 		esac
 
-		echo "BATTERY$icon $percent%"
+		echo "B$icon $percent%"
 
 		sleep 15
 	done
