@@ -7,12 +7,8 @@ PS1='\[\e[92m\]\w\[\e[33m\] > \[\e[0m\]'
 
 promptcmd() {
 	case $PWD in
-		"$HOME"*)
-			echo -ne "\033]0;~${PWD##$HOME}\007"
-			;;
-		*)
-			echo -ne "\033]0;$PWD\007"
-			;;
+		"$HOME"*) echo -ne "\033]0;~${PWD##$HOME}\007" ;;
+		*)        echo -ne "\033]0;$PWD\007" ;;
 	esac
 }
 PROMPT_COMMAND=promptcmd

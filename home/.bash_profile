@@ -15,7 +15,6 @@ export TERMINAL="st"
 export FFF_OPENER="xdg-open"
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_KEY_SHELL="off"  
-
 export FFF_COL1=4
 
 # Startx if tty1
