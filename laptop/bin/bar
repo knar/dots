@@ -1,6 +1,37 @@
 #!/usr/bin/env bash
 #
-# clean bar, brutha
+# bar
+
+main() {
+	name=bar
+	
+	if xdo id -a "$name" > /dev/null; then
+		echo 'error: bar is already running' >&2
+		exit 1
+	fi
+
+	# proper cleanup  
+	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+	
+	# source configs
+	source ~/.config/bar/config
+	source ~/.config/bar/icons
+
+	# set top padding for bar
+	bspc config top_padding "$wmtoppad"
+	
+	# bar pipe
+	start_lemons | format_bar | draw_bar
+
+	# ensure proper fullscreen behavior
+	until bar_id=$(xdo id -a "$name"); do
+		sleep 0.001
+	done
+	xdo below -t $(xdo id -n root) $bar_id
+
+	# don't end the proceess 
+	wait
+}
 
 # source and invoke lemons
 start_lemons() {
@@ -9,7 +40,7 @@ start_lemons() {
 	done
 
 	for func in wks ttl ntw vol bri bat clk; do
-		"$func" &
+		$func &
 	done
 }
 
@@ -17,13 +48,6 @@ start_lemons() {
 format_bar() {
 	while read -r event; do
 		case $event in
-			#WORKSPACES*) wks=${event:10} ;;
-			#TITLE*)      ttl=${event:5} ;;
-			#NETWORK*)    ntw=${event:7} ;;
-			#VOLUME*)     vol=${event:6} ;;
-			#BRIGHTNESS*) bri=${event:10} ;;
-			#BATTERY*)    bat=${event:7} ;;
-			#CLOCK*)      clk=${event:5} ;;
 			W*) wks=${event:1} ;;
 			T*) ttl=${event:1} ;;
 			N*) ntw=${event:1} ;;
@@ -47,37 +71,6 @@ draw_bar() {
 		-f "$iconfont" \
 		-F "$foreground" \
 		-B "$background" &
-}
-
-main() {
-	name=bar
-	
-	if xdo id -a "$name" > /dev/null; then
-		echo 'error: bar is already running' >&2
-		exit 1
-	fi
-
-	# cleanup  
-	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-	
-	# source configs
-	source ~/.config/bar/config
-	source ~/.config/bar/icons
-
-	# set top padding for bar
-	bspc config top_padding "$wmtoppad"
-	
-	# bar pipe
-	start_lemons | format_bar | draw_bar
-
-	# ensure proper fullscreen behavior
-	until bar_id=$(xdo id -a "$name"); do
-		sleep 0.001
-	done
-	xdo below -t $(xdo id -n root) $bar_id
-
-	# don't end the proceess 
-	wait
 }
 
 main
