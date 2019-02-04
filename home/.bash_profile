@@ -14,8 +14,11 @@ export TERMINAL="st"
 # FFF
 export FFF_OPENER="xdg-open"
 export FFF_CD_FILE=~/.cache/fff/fff_d
-export FFF_KEY_SHELL="off"  
 export FFF_COL1=4
+export FFF_FAV1=~/dev
+export FFF_FAV2=~/.config
+export FFF_FAV3=~/dls
+export FFF_FAV4=~/pics
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \
