@@ -11,6 +11,9 @@ export BROWSER="chromium"
 export EDITOR="nvim"
 export TERMINAL="st"
 
+# opam configuration
+test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 # FFF
 export FFF_OPENER="xdg-open"
 export FFF_CD_FILE=~/.cache/fff/fff_d
