@@ -4,17 +4,17 @@ bat() {
 	path=/sys/class/power_supply
 
 	while true; do
-		[[ -f "$path/BAT0/energy_now" ]]  && bat0_val=$(< "$path/BAT0/energy_now") 
-		[[ -f "$path/BAT0/energy_full" ]] && bat0_max=$(< "$path/BAT0/energy_full") 
-		[[ -f "$path/BAT1/energy_now" ]]  && bat1_val=$(< "$path/BAT1/energy_now") 
-		[[ -f "$path/BAT1/energy_full" ]] && bat1_max=$(< "$path/BAT1/energy_full") 
+		[[ -f "$path/BAT0/energy_now" ]]  && bat0_val="$(< $path/BAT0/energy_now)"
+		[[ -f "$path/BAT0/energy_full" ]] && bat0_max="$(< $path/BAT0/energy_full)"
+		[[ -f "$path/BAT1/energy_now" ]]  && bat1_val="$(< $path/BAT1/energy_now)" 
+		[[ -f "$path/BAT1/energy_full" ]] && bat1_max="$(< $path/BAT1/energy_full)" 
 		
 		((bat_val=bat0_val+bat1_val))
 		((bat_max=bat0_max+bat1_max))
 		((percent=bat_val*100/bat_max))
 		
 		((step=percent/10))
-		charging=$(< "$path/AC/online")
+		charging="$(< $path/AC/online)"
 		case $charging in
 			1) icon="${batc_icons[$step]}" ;;
 			*) icon="${bat_icons[$step]}" ;;

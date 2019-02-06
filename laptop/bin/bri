@@ -3,8 +3,8 @@
 # Change brightness, cache percent for bar
 
 bri_path="/sys/class/backlight/intel_backlight"
-bri="$(< "${bri_path}/brightness")"
-max="$(< "${bri_path}/max_brightness")"
+bri="$(< ${bri_path}/brightness)"
+max="$(< ${bri_path}/max_brightness)"
 
 if [[ $# -eq 1 ]]; then
 	((step=max/10))
