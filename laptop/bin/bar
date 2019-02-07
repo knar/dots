@@ -21,15 +21,15 @@ main() {
 	bspc config top_padding "$wmtoppad"
 	
 	# bar pipe
-	start_lemons | format_bar | draw_bar
+	start_lemons | format_bar | draw_bar &
 
 	# ensure proper fullscreen behavior
 	until bar_id=$(xdo id -a "$name"); do
 		sleep 0.001
 	done
-	xdo below -t $(xdo id -n root) $bar_id
+	xdo below -t $(xdo id -n root) "$bar_id"
 
-	# don't end the proceess 
+	# don't end the process
 	wait
 }
 
@@ -70,7 +70,7 @@ draw_bar() {
 		-f "$font" \
 		-f "$iconfont" \
 		-F "$foreground" \
-		-B "$background" &
+		-B "$background"
 }
 
 main
