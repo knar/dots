@@ -4,7 +4,7 @@
 
 main() {
 	name=bar
-	
+
 	if xdo id -a "$name" > /dev/null; then
 		echo 'error: bar is already running' >&2
 		exit 1
@@ -12,65 +12,68 @@ main() {
 
 	# proper cleanup  
 	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-	
+
 	# source configs
 	source ~/.config/bar/config
 	source ~/.config/bar/icons
 
 	# set top padding for bar
 	bspc config top_padding "$wmtoppad"
-	
-	# bar pipe
-	start_lemons | format_bar | draw_bar &
+
+	# source lemons
+	for file in ~/bin/lemons/*; do
+		source "$file"
+	done
+
+	# awwwyea
+	start_lemons | format_bar | draw_bar | bash &
 
 	# ensure proper fullscreen behavior
-	until bar_id=$(xdo id -a "$name"); do
+	until bar_id="$(xdo id -a $name)"; do
 		sleep 0.001
 	done
-	xdo below -t $(xdo id -n root) "$bar_id"
+	xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$bar_id"
 
 	# don't end the process
 	wait
 }
 
-# source and invoke lemons
 start_lemons() {
-	for file in ~/bin/lemons/*; do
-		source "$file"
-	done
-
-	for func in wks ttl ntw vol bri bat clk; do
-		$func &
-	done
+	((show_wks)) && wks &
+	((show_ttl)) && ttl &
+	((show_ntw)) && ntw &
+	((show_vol)) && vol &
+	((show_bri)) && bri &
+	((show_bat)) && bat &
+	((show_clk)) && clk &
 }
 
-# format for bar from piped fifo
 format_bar() {
 	while read -r event; do
 		case $event in
-			W*) wks=${event:1} ;;
-			T*) ttl=${event:1} ;;
-			N*) ntw=${event:1} ;;
-			V*) vol=${event:1} ;;
-			L*) bri=${event:1} ;;
-			B*) bat=${event:1} ;;
-			C*) clk=${event:1} ;;
+			W*) wks="${event:1}" ;;
+			T*) ttl="${event:1}" ;;
+			N*) ntw=" ${event:1} " ;;
+			V*) vol=" ${event:1} " ;;
+			L*) bri=" ${event:1} " ;;
+			B*) bat=" ${event:1} " ;;
+			C*) clk=" ${event:1} " ;;
 		esac
-
-		printf '%b\n' "%{l}$wks  $ttl%{r}$ntw  $vol  $bri  $bat  $clk "
+			
+		printf "%b\n" "%{l}$wks $ttl%{r}$ntw$vol$bat$clk"
 	done
 }
 
-# draw bar from piped formatted string
 draw_bar() {
 	lemonbar -n "$name" \
-		-g "${width}x$height+$xoffset+$yoffset" \
-		-u "$underlineheight" \
-		-o "$textoffset" \
+		-g "${width}x$height+$offset_x+$offset_y" \
+		-u "$ul_height" \
+		-o "$font_offset" \
 		-f "$font" \
-		-f "$iconfont" \
-		-F "$foreground" \
-		-B "$background"
+		-o "$icon_offset" \
+		-f "$icon_font" \
+		-B "$df_bg" \
+		-F "$df_fg"
 }
 
 main

@@ -2,7 +2,7 @@
 #
 # ~/.xinitrc
 
-xset r rate 150 50
+xset r rate 180 50
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
 xrdb ~/.Xresources
@@ -11,7 +11,7 @@ sxhkd &
 bar &
 unclutter &
 redshift &
-compton --config ~/.config/compton/config &
+compton &
 feh --bg-fill --no-fehbg ~/pics/wallpapers/house.jpg
 
 exec bspwm

@@ -16,8 +16,12 @@ vol() {
 							;;
 					esac
 
-					echo "V$icon $percent%"
-					;;
+					if ((show_vol_per)); then	
+						echo "V$icon $percent%"
+					else
+						echo "V$icon"
+					fi
+				;;
 			esac
 		done
 }

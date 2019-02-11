@@ -1,38 +1,27 @@
 ntw() {
-	while true; do
-		state=$(nmcli -g STATE g)
-		ivity=$(nmcli -g CONNECTIVITY g)
-		types=($(nmcli -g TYPE d))
-		conns=($(nmcli -g CONNECTION d))
+	dev="wlp3s0"
 
-		[[ $state != "disconnected" && $ivity == "limited" ]] && state=$ivity
-
-		case ${types[0]} in
-			wifi)
-				case $state in
-					connected)    icon=$ntw_wifi_good ;;
-					limited)      icon=$ntw_wifi_problem ;;
-					connecting*)  icon=$ntw_wifi_connecting ;;
-					disconnected) icon=$ntw_wifi_disconnected ;;
-				esac
+	{ echo "$dev"; nmcli device monitor 2> /dev/null; } |
+		while read -r event; do
+			case $event in
+				"$dev"*)
+					state=$(nmcli -g STATE g)
+					case $state in
+						connected)    icon=$ntw_wifi_good ;;
+						connecting)   icon=$ntw_wifi_connecting ;;
+						disconnected) icon=$ntw_wifi_disconnected ;;
+					esac
+					
+					if ((show_ntw_name)); then
+						cons=($(nmcli -g CONNECTION d))
+						con=${cons[0]}
+						echo "N$icon $con"
+					else
+						echo "N$icon"
+					fi
 				;;
-			ethernet)
-				case $state in
-					connected)    icon=$ntw_wire_good ;;
-					limited)      icon=$ntw_wire_problem ;;
-					connecting*)  icon=$ntw_wire_connecting ;;
-					disconnected) icon=$ntw_wire_disconnected ;;
-				esac
-				;;
-		esac
-
-		conn=${conns[0]}
-		[[ $conn == "" ]] && conn='Disconnected'
-
-		echo "N$icon $conn"
-
-		sleep 2
-	done
+			esac
+		done
 }
 
 # vim: ft=sh

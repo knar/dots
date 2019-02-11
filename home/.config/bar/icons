@@ -1,18 +1,49 @@
 # bar icons
 
-iconfont="Material Design Icons:size=14"
+icon_font="Material Design Icons:size=15"
+icon_offset=0
 
 source environment-colors
 
-#            focused  occupied free
-wks_icons=( '\uf764' '\uf43e' '\uf43d' )
+wks_occ_icons=(
+	'\uf2af' # chromium
+	'\uf18d' # console
+	'\uf3aa'
+	'\uf3ad'
+	'\uf3b0'
+	'\uf3b3'
+	'\uf3b6'
+	'\uf3b9'
+)
 
-ntw_wifi_good="%{F$GREEN}\uf924%{F-}"
+wks_foc_icons=(
+	'\uf3a4'
+	'\uf3a7'
+	'\uf3aa'
+	'\uf3ad'
+	'\uf3b0'
+	'\uf3b3'
+	'\uf3b6'
+	'\uf3b9'
+)
+
+wks_free_icons=(
+	'\uf3a6'
+	'\uf3a9'
+	'\uf3ac'
+	'\uf3af'
+	'\uf3b2'
+	'\uf3b5'
+	'\uf3b8'
+	'\uf3bb'
+)
+
+ntw_wifi_good="%{F$FOREGROUND}\uf5a9%{F-}"
 ntw_wifi_problem="%{F$RED}\uf92a%{F-}"
-ntw_wifi_connecting="%{F$YELLOW}\uf922%{F-}"
+ntw_wifi_connecting="%{F$YELLOW}\uf91f%{F-}"
 ntw_wifi_disconnected="%{F$DARKRED}\uf92d%{F-}"
 
-ntw_wire_good="%{F$GREEN}\uf318%{F-}"
+ntw_wire_good="%{F$FOREGROUND}\uf318%{F-}"
 ntw_wire_problem="%{F$RED}\uf31a%{F-}"
 ntw_wire_connecting="%{F$YELLOW}\uf31a%{F-}"
 ntw_wire_disconnected="%{F$DARKRED}\uf319%{F-}"

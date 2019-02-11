@@ -7,7 +7,11 @@ bri() {
 		((step=per/34))	
 		icon="${bri_icons[$step]}"
 
-		echo "L$icon $per%"
+		if ((show_bri_per)); then
+			echo "L$icon $per%"
+		else	
+			echo "L$icon"
+		fi
 
 		sleep 2
 	done

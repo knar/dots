@@ -15,7 +15,6 @@ export TERMINAL="st"
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # FFF
-export FFF_OPENER="xdg-open"
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_COL1=4
 export FFF_FAV1=~/dev

@@ -1,17 +1,36 @@
 # bar config
 
-width=1920
-height=40
-xoffset=0
-yoffset=0
-underlineheight=2
-textoffset=0
-((wmtoppad=height+yoffset))
+# include module?
+show_wks=1
+show_ttl=1
+show_ntw=1
+show_vol=1
+show_bri=0
+show_bat=1
+show_clk=1
 
+# include module details?
+show_ntw_name=0
+show_vol_per=0
+show_bri_per=0
+show_bat_per=0
+
+# lemonbar parameters
 font="monospace:size=13"
+font_offset=0
 
+width=1920
+height=42
+offset_x=0
+offset_y=0
+ul_height=3
+
+# style
 source environment-colors
-background=$BACKGROUND
-foreground=$FOREGROUND
+df_bg=$BACKGROUND
+df_fg=$FOREGROUND
+
+# for bspwm padding
+((wmtoppad=height+yoffset))
 
 # vim: ft=sh

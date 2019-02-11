@@ -9,8 +9,8 @@ dmenu_run -fn "$font" \
           -nf "$FOREGROUND" \
           -nb "$BACKGROUND" \
           -sf "$FOREGROUND" \
-          -sb "$DARKBLUE" \
+          -sb "$DARKRED" \
           -w "$width" \
           -h "$height" \
-          -x "$xoffset" \
-          -y "$yoffset"
+          -x "$offset_x" \
+          -y "$offset_y"

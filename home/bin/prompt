@@ -11,10 +11,10 @@ shift
 [[ $(echo -e "No\nYes" | dmenu -fn "$font" \
 	-w "$width" \
 	-h "$height" \
-	-x "$xoffset" \
-	-y "$yoffset" \
+	-x "$offset_x" \
+	-y "$offset_y" \
 	-nf "$FOREGROUND" \
 	-nb "$BACKGROUND" \
 	-sf "$FOREGROUND" \
-	-sb "$DARKBLUE" \
+	-sb "$DARKRED" \
 	-i -p "$label") == "Yes" ]] && $@

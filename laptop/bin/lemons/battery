@@ -11,16 +11,20 @@ bat() {
 		
 		((bat_val=bat0_val+bat1_val))
 		((bat_max=bat0_max+bat1_max))
-		((percent=bat_val*100/bat_max))
+		((per=bat_val*100/bat_max))
 		
-		((step=percent/10))
+		((step=per/10))
 		charging="$(< $path/AC/online)"
 		case $charging in
 			1) icon="${batc_icons[$step]}" ;;
 			*) icon="${bat_icons[$step]}" ;;
 		esac
-
-		echo "B$icon $percent%"
+		
+		if ((show_bat_per)); then
+			echo "B$icon $per%"
+		else
+			echo "B$icon"
+		fi
 
 		sleep 15
 	done
