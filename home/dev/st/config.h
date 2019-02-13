@@ -80,39 +80,33 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 4;
+unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* -----               */
-	/* lowkey color scheme */
-	/* -                   */
-
+	/* Defaults here are pretty standard */
 	"#2f343c",
-	"#a54242",
-	"#8c9440",
-	"#de935f",
-	"#41749f",
-	"#8c6498",
-	"#68adaf",
-	"#a5abaf",
+    "#a54242",
+    "#8c9440",
+    "#de935f",
+    "#41749f",
+    "#8c6498",
+    "#68adaf",
+    "#a5abaf",
 
-	"#424b54",
-	"#cc6666",
-	"#b5bd68",
-	"#f0c674",
-	"#5495cc",
-	"#ac7bbb",
-	"#83dadc",
-	"#d4d9dc",
+    "#424b54",
+    "#cc6666",
+    "#b5bd68",
+    "#f0c674",
+    "#5495cc",
+    "#ac7bbb",
+    "#83dadc",
+    "#d4d9dc",
 
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#d4d9dc", // foreground
-	"#16181c", // background
-	"#d4d9dc", // cursor
-	"#ac7bbb", // r cursor ?
+    [255] = 0,
+    "#d4d9dc", // foreground
+    "#16181c", // background
+    "#d4d9dc", // cursor
 };
 
 
@@ -123,7 +117,7 @@ static const char *colorname[] = {
 unsigned int defaultfg = 256;
 unsigned int defaultbg = 257;
 static unsigned int defaultcs = 258;
-static unsigned int defaultrcs = 259;
+static unsigned int defaultrcs = 1; // dark red for reverse cursor
 
 /*
  * Default shape of cursor
@@ -155,6 +149,42 @@ static unsigned int mousebg = 0;
 static unsigned int defaultattr = 11;
 
 /*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "font",         STRING,  &font },
+		{ "borderpx",     INTEGER, &borderpx },
+		{ "color0",       STRING,  &colorname[0] },
+		{ "color1",       STRING,  &colorname[1] },
+		{ "color2",       STRING,  &colorname[2] },
+		{ "color3",       STRING,  &colorname[3] },
+		{ "color4",       STRING,  &colorname[4] },
+		{ "color5",       STRING,  &colorname[5] },
+		{ "color6",       STRING,  &colorname[6] },
+		{ "color7",       STRING,  &colorname[7] },
+		{ "color8",       STRING,  &colorname[8] },
+		{ "color9",       STRING,  &colorname[9] },
+		{ "color10",      STRING,  &colorname[10] },
+		{ "color11",      STRING,  &colorname[11] },
+		{ "color12",      STRING,  &colorname[12] },
+		{ "color13",      STRING,  &colorname[13] },
+		{ "color14",      STRING,  &colorname[14] },
+		{ "color15",      STRING,  &colorname[15] },
+		{ "foreground",   STRING,  &colorname[256] },
+		{ "background",   STRING,  &colorname[257] },
+		{ "cursorColor",  STRING,  &colorname[258] },
+		{ "termname",     STRING,  &termname },
+		{ "shell",        STRING,  &shell },
+		{ "xfps",         INTEGER, &xfps },
+		{ "actionfps",    INTEGER, &actionfps },
+		{ "blinktimeout", INTEGER, &blinktimeout },
+		{ "bellvolume",   INTEGER, &bellvolume },
+		{ "tabspaces",    INTEGER, &tabspaces },
+		{ "cwscale",      FLOAT,   &cwscale },
+		{ "chscale",      FLOAT,   &chscale },
+};
+
+/*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
@@ -176,11 +206,12 @@ static Shortcut shortcuts[] = {
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
 	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },

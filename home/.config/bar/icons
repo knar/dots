@@ -12,8 +12,8 @@ wks_occ_icons=(
 	'\uf3ad'
 	'\uf3b0'
 	'\uf3b3'
-	'\uf3b6'
-	'\uf3b9'
+	'\uf386' # music
+	'\ufa06' # system monitor
 )
 
 wks_foc_icons=(

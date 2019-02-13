@@ -9,6 +9,10 @@ if [ $nlines -gt 1 ]; then
 	for pid in $pids; do
 		kill -9 $pid
 	done
+
+	killall nmcli
+	killall pactl
+
 	bspc config top_padding 0
 else
 	bar &

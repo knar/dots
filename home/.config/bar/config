@@ -10,10 +10,14 @@ show_bat=1
 show_clk=1
 
 # include module details?
-show_ntw_name=0
+show_ntw_name=1
 show_vol_per=0
-show_bri_per=0
+show_bri_per=1
 show_bat_per=0
+
+# clock settings
+show_date=0
+show_clk_icon=0
 
 # lemonbar parameters
 font="monospace:size=13"
@@ -27,9 +31,9 @@ ul_height=3
 
 # style
 source environment-colors
-df_bg=$BACKGROUND
-df_fg=$FOREGROUND
-
+c_bg=$BACKGROUND
+c_fg=$FOREGROUND
+c_hl=$DARKRED
 # for bspwm padding
 ((wmtoppad=height+yoffset))
 

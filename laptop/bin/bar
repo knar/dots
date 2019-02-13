@@ -39,28 +39,35 @@ main() {
 }
 
 start_lemons() {
-	((show_wks)) && wks &
-	((show_ttl)) && ttl &
-	((show_ntw)) && ntw &
-	((show_vol)) && vol &
-	((show_bri)) && bri &
-	((show_bat)) && bat &
-	((show_clk)) && clk &
+	for func in wks ttl ntw vol bri bat clk; do
+		eval show=\$show_$func
+		((show)) && $func &
+	done
 }
 
 format_bar() {
 	while read -r event; do
+		var="${event:1}"
 		case $event in
-			W*) wks="${event:1}" ;;
-			T*) ttl="${event:1}" ;;
-			N*) ntw=" ${event:1} " ;;
-			V*) vol=" ${event:1} " ;;
-			L*) bri=" ${event:1} " ;;
-			B*) bat=" ${event:1} " ;;
-			C*) clk=" ${event:1} " ;;
+			W*) wks=$var ;;
+			T*) ttl=$var ;;
+			N*) ntw=$var ;;
+			V*) vol=$var ;;
+			L*) bri=$var ;;
+			B*) bat=$var ;;
+			C*) clk=$var ;;
 		esac
-			
-		printf "%b\n" "%{l}$wks $ttl%{r}$ntw$vol$bat$clk"
+
+		left="$wks $ttl"
+	
+		right=""
+		((show_ntw)) && right="$right $ntw "
+		((show_vol)) && right="$right $vol "
+		((show_bri)) && right="$right $bri "
+		((show_bat)) && right="$right $bat "
+		((show_clk)) && right="$right $clk "
+
+		printf "%b\n" "%{l}$left%{r}$right"
 	done
 }
 
@@ -72,8 +79,8 @@ draw_bar() {
 		-f "$font" \
 		-o "$icon_offset" \
 		-f "$icon_font" \
-		-B "$df_bg" \
-		-F "$df_fg"
+		-B "$c_bg" \
+		-F "$c_fg"
 }
 
 main

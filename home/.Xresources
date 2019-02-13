@@ -1,7 +1,19 @@
 ! ~/.Xresources
 
-#include ".config/xres/urxvt"
-#include ".config/xres/fonts"
-#include ".config/xres/colors/lowkey"
+! for st terminal
+*.font: Input:size=13
+*.borderpx: 16
+
+! font settings
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.dpi: 96
+
+! color scheme
+#include ".config/xres/colors/standard"
 
 ! vim: ft=xdefaults

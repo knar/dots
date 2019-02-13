@@ -8,17 +8,41 @@ wks() {
 				num=${1:1}
 				include=1
 				case $1 in
-					O*) icon="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u} ${wks_occ_icons[num-1]} " ;;
-					U*) icon="%{B$RED}%{F$WHITE}%{U$DARKRED}%{+u} ${wks_occ_icons[num-1]} " ;;
-					F*) icon="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u} ${wks_foc_icons[num-1]} " ;;
-					o*) icon="%{B$BACKGROUND}%{F$DARKWHITE}%{U$BACKGROUND}%{+u} ${wks_occ_icons[num-1]} " ;;
-					u*) icon="%{B$RED}%{F$DARKWHITE}%{U$RED}%{+u} ${wks_occ_icons[num-1]} " ;;
-					f*) icon="%{B$BACKGROUND}%{F$BLACK}%{U$BACKGROUND}%{+u} ${wks_free_icons[num-1]} " ;;
-					*)  include=0 ;;
+					O*)
+						style="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u}"
+						icon="${wks_occ_icons[num-1]}"
+					;;
+					
+					U*)
+						style="%{B$RED}%{F$WHITE}%{U$DARKRED}%{+u}"
+						icon="${wks_occ_icons[num-1]}"
+					;;
+
+					F*)
+						style="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u}"
+						icon="${wks_free_icons[num-1]}"
+					;;
+
+					o*)
+						style="%{B$BACKGROUND}%{F$DARKWHITE}%{U$BACKGROUND}%{+u}"
+						icon="${wks_occ_icons[num-1]}"
+					;;
+
+					u*)
+						style="%{B$RED}%{F$DARKWHITE}%{U$RED}%{+u}"
+						icon="${wks_occ_icons[num-1]}"
+					;;
+
+					f*)
+						style="%{B$BACKGROUND}%{F$BLACK}%{U$BACKGROUND}%{+u}"
+						icon="${wks_free_icons[num-1]}"
+					;;
+
+					*) include=0 ;;
 				esac
 
 				[[ $include -gt 0 ]] && {
-					icon="$icon%{-u}%{U-}%{F-}%{B-}"
+					icon="$style $icon %{-u}%{U-}%{F-}%{B-}"
 					wks="$wks%{A:bspc desktop -f $num:}$icon%{A}"
 				}
 

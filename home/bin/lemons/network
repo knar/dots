@@ -11,7 +11,7 @@ ntw() {
 						connecting)   icon=$ntw_wifi_connecting ;;
 						disconnected) icon=$ntw_wifi_disconnected ;;
 					esac
-					
+
 					if ((show_ntw_name)); then
 						cons=($(nmcli -g CONNECTION d))
 						con=${cons[0]}

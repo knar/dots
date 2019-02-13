@@ -21,6 +21,7 @@ export FFF_FAV1=~/dev
 export FFF_FAV2=~/.config
 export FFF_FAV3=~/dls
 export FFF_FAV4=~/pics
+export FFF_FAV5=~/ub/spring19
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \

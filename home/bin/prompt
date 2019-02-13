@@ -13,8 +13,8 @@ shift
 	-h "$height" \
 	-x "$offset_x" \
 	-y "$offset_y" \
-	-nf "$FOREGROUND" \
-	-nb "$BACKGROUND" \
-	-sf "$FOREGROUND" \
-	-sb "$DARKRED" \
+	-nf "$c_fg" \
+	-nb "$c_bg" \
+	-sf "$c_fg" \
+	-sb "$c_hl" \
 	-i -p "$label") == "Yes" ]] && $@
