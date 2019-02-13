@@ -5,16 +5,16 @@ export XDG_CONFIG_HOME=$HOME/.config
 export GOPATH=$HOME/dev/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/dev/fff
 export PATH=$PATH:$HOME/.npm-global/bin
 export BROWSER="chromium"
 export EDITOR="nvim"
 export TERMINAL="st"
 
-# opam configuration
+# opam
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # FFF
+export PATH=$PATH:$HOME/src/fff
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_COL1=4
 export FFF_FAV1=~/dev
