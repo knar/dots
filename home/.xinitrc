@@ -11,7 +11,7 @@ sxhkd &
 bar &
 unclutter &
 redshift &
-compton &
+#compton &
 feh --bg-fill --no-fehbg ~/pics/wallpapers/house.jpg
 
 exec bspwm
