@@ -14,6 +14,6 @@ Xft.rgba: rgb
 Xft.dpi: 96
 
 ! color scheme
-#include ".config/xres/colors/standard"
+#include ".config/xres/colors/hybrid"
 
 ! vim: ft=xdefaults

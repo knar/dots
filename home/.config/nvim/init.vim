@@ -1,30 +1,49 @@
-set encoding=utf-8
-set title
-set tabstop=4
-set shiftwidth=4
-set number
-set t_Co=16
-colorscheme termorrow
-inoremap jk <esc>
+" vimrc
 
-set showbreak=↪\ 
-set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
-
-" -----
-" Plugins
-" -
+" plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-" :F
-Plug 'dylanaraps/fff.vim'
+	Plug 'lervag/vimtex'
+	Plug 'dylanaraps/fff.vim'
+	Plug 'kristijanhusak/vim-hybrid-material'
 
 call plug#end()
 
-" fff config, open with f in normal mode
-let g:fff#split = "20vnew"
-let g:fff#split_direction = "nosplitbelow nosplitright"
+" encoding
+set encoding=utf-8
+
+" update window title
+set title
+
+" tabs
+set tabstop=4 shiftwidth=4
+
+" line numbers
+set number cursorline
+
+" font settings
+let g:enable_italic_font = 1
+
+" colors
+set termguicolors
+colorscheme hybrid_reverse
+
+" jk for escape
+inoremap jk <esc>
+
+" f to open fff
 nnoremap f :F<CR>
 
-" merlin (ocaml)
+" invis chars for list mode
+set showbreak=↪\
+set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
+
+" Ocaml
+autocmd FileType ml set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+" fff settings
+let g:fff#split = "20vnew"
+let g:fff#split_direction = "nosplitbelow nosplitright"

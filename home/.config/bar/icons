@@ -11,7 +11,7 @@ wks_occ_icons=(
 	'\uf3aa'
 	'\uf3ad'
 	'\uf3b0'
-	'\uf3b3'
+	'\ufb57' # chat
 	'\uf386' # music
 	'\ufa06' # system monitor
 )
