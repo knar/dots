@@ -3,7 +3,7 @@
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-	Plug 'lervag/vimtex'
+	Plug 'xuhdev/vim-latex-live-preview'
 	Plug 'dylanaraps/fff.vim'
 	Plug 'kristijanhusak/vim-hybrid-material'
 
@@ -45,5 +45,5 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " fff settings
-let g:fff#split = "20vnew"
+let g:fff#split = "24vnew"
 let g:fff#split_direction = "nosplitbelow nosplitright"

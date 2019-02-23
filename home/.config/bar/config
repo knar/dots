@@ -16,7 +16,7 @@ show_bri_per=1
 show_bat_per=0
 
 # clock settings
-show_date=0
+show_date=1
 show_clk_icon=0
 
 # lemonbar parameters

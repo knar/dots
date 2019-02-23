@@ -1,9 +1,5 @@
 ! ~/.Xresources
 
-! for st terminal
-*.font: Input:size=13
-*.borderpx: 16
-
 ! font settings
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

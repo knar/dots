@@ -13,7 +13,7 @@ bat() {
 		((bat_max=bat0_max+bat1_max))
 		((per=bat_val*100/bat_max))
 		
-		((step=per/10))
+		((step=(per+5)/10))
 		charging="$(< $path/AC/online)"
 		case $charging in
 			1) icon="${batc_icons[$step]}" ;;

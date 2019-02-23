@@ -3,11 +3,11 @@
 # partial screenshot script using maim
 
 dir=~/pics/screenshots
-cur=$(printf '%(%Y-%m-%d-%H-%M-%S)T\n' '-1')
+name=$(printf '%(%Y-%m-%d-%H-%M-%S)T\n' '-1')
 
 mkdir -p "$dir" || exit 1
 
 case "$1" in
-	-s) maim -us "$dir/$cur.png" ;;
-	*)  maim -u "$dir/$cur.png" ;;
+	-s) maim -us "$dir/$name.png" ;;
+	*)  maim -u "$dir/$name.png" ;;
 esac

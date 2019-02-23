@@ -21,4 +21,3 @@ if [[ $# -eq 1 ]]; then
 	((per=bri*100/max))
 	echo "$per" > ~/.cache/bri
 fi
-
