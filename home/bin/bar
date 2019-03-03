@@ -58,8 +58,10 @@ format_bar() {
 			C*) clk=$var ;;
 		esac
 
-		left="$wks $ttl"
-	
+		left="$wks"
+
+		center="$ttl"
+
 		right=""
 		((show_ntw)) && right="$right $ntw "
 		((show_vol)) && right="$right $vol "
@@ -67,7 +69,7 @@ format_bar() {
 		((show_bat)) && right="$right $bat "
 		((show_clk)) && right="$right $clk "
 
-		printf "%b\n" "%{l}$left%{r}$right"
+		printf "%b\n" "%{l}$left%{c}$center%{r}$right"
 	done
 }
 

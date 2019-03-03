@@ -1,9 +1,14 @@
 # bar icons
 
-icon_font="Material Design Icons:size=15"
+icon_font="Material Design Icons:size=16"
 icon_offset=0
 
 source environment-colors
+
+wks_foc="%{F$GREEN}\uf9dd%{F-}"
+wks_occ="%{F$DARKWHITE}\uf9dd%{F-}"
+wks_urg="%{F$RED}\uf9dd%{F-}"
+wks_free="%{F$DARKWHITE}\uf9de%{F-}"
 
 wks_occ_icons=(
 	'\uf2af' # chromium
@@ -50,7 +55,7 @@ ntw_wire_disconnected="%{F$DARKRED}\uf319%{F-}"
 
 #            low      med      high 
 vol_icons=( '\uf57f' '\uf580' '\uf57e' )
-vol_muted_icon="%{F$RED}\uf75e%{F-}"
+vol_muted_icon='\uf75e'
 
 #            low      med      high
 bri_icons=( '\uf0de' '\uf0df' '\uf0e0' )

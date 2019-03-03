@@ -12,6 +12,6 @@ bar &
 unclutter &
 redshift &
 compton &
-feh --bg-fill --no-fehbg ~/pics/wallpapers/chill_jpn.jpg
+feh --bg-fill --no-fehbg ~/pics/wallpapers/beach.jpg
 
 exec bspwm

@@ -3,6 +3,7 @@
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+	Plug 'junegunn/fzf.vim'
 	Plug 'xuhdev/vim-latex-live-preview'
 	Plug 'dylanaraps/fff.vim'
 	Plug 'kristijanhusak/vim-hybrid-material'

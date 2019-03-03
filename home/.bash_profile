@@ -13,7 +13,7 @@ export TERMINAL="st"
 # opam
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-# FFF
+#fff
 export PATH=$PATH:$HOME/src/fff
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_COL1=4

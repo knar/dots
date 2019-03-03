@@ -3,47 +3,20 @@ wks() {
 		while read -r event; do
 			IFS=:; set -- $event
 			
-			wks=""
+			wks=" "
 			while test "$1"; do
 				num=${1:1}
 				include=1
 				case $1 in
-					O*)
-						style="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u}"
-						icon="${wks_occ_icons[num-1]}"
-					;;
-					
-					U*)
-						style="%{B$RED}%{F$WHITE}%{U$DARKRED}%{+u}"
-						icon="${wks_occ_icons[num-1]}"
-					;;
-
-					F*)
-						style="%{B$DARKBLACK}%{F$WHITE}%{U$DARKRED}%{+u}"
-						icon="${wks_free_icons[num-1]}"
-					;;
-
-					o*)
-						style="%{B$BACKGROUND}%{F$DARKWHITE}%{U$BACKGROUND}%{+u}"
-						icon="${wks_occ_icons[num-1]}"
-					;;
-
-					u*)
-						style="%{B$RED}%{F$DARKWHITE}%{U$RED}%{+u}"
-						icon="${wks_occ_icons[num-1]}"
-					;;
-
-					f*)
-						style="%{B$BACKGROUND}%{F$BLACK}%{U$BACKGROUND}%{+u}"
-						icon="${wks_free_icons[num-1]}"
-					;;
-
-					*) include=0 ;;
+					[OF]*) icon="$wks_foc" ;;
+					[Uu]*) icon="$wks_urg" ;;
+					o*)    icon="$wks_occ" ;;
+					f*)    icon="$wks_free" ;;
+					*)     include=0 ;;
 				esac
 
 				[[ $include -gt 0 ]] && {
-					icon="$style $icon %{-u}%{U-}%{F-}%{B-}"
-					wks="$wks%{A:bspc desktop -f $num:}$icon%{A}"
+					wks="$wks%{A:bspc desktop -f $num:}$icon %{A}"
 				}
 
 				shift
