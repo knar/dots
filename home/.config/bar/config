@@ -33,7 +33,7 @@ ul_height=3
 source environment-colors
 c_bg=$BACKGROUND
 c_fg=$FOREGROUND
-c_hl=$DARKRED
+c_hl=$DARKCYAN
 # for bspwm padding
 ((wmtoppad=height+yoffset))
 

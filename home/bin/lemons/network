@@ -5,6 +5,10 @@ ntw() {
 		while read -r event; do
 			case $event in
 				"$dev"*)
+					# sometimes state doesnt get
+					# updated, too fast?
+					sleep 0.05
+
 					state=$(nmcli -g STATE g)
 					case $state in
 						connected)    icon=$ntw_wifi_good ;;

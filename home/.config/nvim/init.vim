@@ -32,8 +32,11 @@ colorscheme hybrid_reverse
 " jk for escape
 inoremap jk <esc>
 
-" f to open fff
-nnoremap f :F<CR>
+" f to open fzf
+nnoremap f :FZF<CR>
+
+" F to open fff
+nnoremap F :F<CR>
 
 " invis chars for list mode
 set showbreak=↪\
