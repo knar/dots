@@ -2,42 +2,6 @@
 #
 # bar
 
-main() {
-	name=bar
-
-	if xdo id -a "$name" > /dev/null; then
-		echo 'error: bar is already running' >&2
-		exit 1
-	fi
-
-	# proper cleanup  
-	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-
-	# source configs
-	source ~/.config/bar/config
-	source ~/.config/bar/icons
-
-	# set top padding for bar
-	bspc config top_padding "$wmtoppad"
-
-	# source lemons
-	for file in ~/bin/lemons/*; do
-		source "$file"
-	done
-
-	# awwwyea
-	start_lemons | format_bar | draw_bar | bash &
-
-	# ensure proper fullscreen behavior
-	until bar_id="$(xdo id -a $name)"; do
-		sleep 0.001
-	done
-	xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$bar_id"
-
-	# don't end the process
-	wait
-}
-
 start_lemons() {
 	for func in wks ttl ntw vol bri bat clk; do
 		eval show=\$show_$func
@@ -83,6 +47,42 @@ draw_bar() {
 		-f "$icon_font" \
 		-B "$c_bg" \
 		-F "$c_fg"
+}
+
+main() {
+	name=bar
+
+	if xdo id -a "$name" > /dev/null; then
+		echo 'error: bar is already running' >&2
+		exit 1
+	fi
+
+	# proper cleanup
+	trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+	# source configs
+	source ~/.config/bar/config
+	source ~/.config/bar/icons
+
+	# set top padding for bar
+	bspc config top_padding "$wmtoppad"
+
+	# source lemons
+	for file in ~/bin/lemons/*; do
+		source "$file"
+	done
+
+	# awwwyea
+	start_lemons | format_bar | draw_bar | bash &
+
+	# ensure proper fullscreen behavior
+	until bar_id="$(xdo id -a $name)"; do
+		sleep 0.001
+	done
+	xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$bar_id"
+
+	# don't end the process
+	wait
 }
 
 main

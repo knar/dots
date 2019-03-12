@@ -14,14 +14,14 @@ export TERMINAL="st"
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 #fff
-export PATH=$PATH:$HOME/src/fff
+export PATH=$PATH:$HOME/bin/fff
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_COL1=4
 export FFF_FAV1=~/dev
 export FFF_FAV2=~/.config
 export FFF_FAV3=~/dls
 export FFF_FAV4=~/pics
-export FFF_FAV5=~/ub/spring19
+export FFF_FAV5=~/docs/uni/spring19
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \
