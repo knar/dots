@@ -9,6 +9,7 @@ export PATH=$PATH:$HOME/.npm-global/bin
 export BROWSER="chromium"
 export EDITOR="nvim"
 export TERMINAL="st"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 
 # opam
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

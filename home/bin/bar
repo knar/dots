@@ -2,53 +2,6 @@
 #
 # bar
 
-start_lemons() {
-	for func in wks ttl ntw vol bri bat clk; do
-		eval show=\$show_$func
-		((show)) && $func &
-	done
-}
-
-format_bar() {
-	while read -r event; do
-		var="${event:1}"
-		case $event in
-			W*) wks=$var ;;
-			T*) ttl=$var ;;
-			N*) ntw=$var ;;
-			V*) vol=$var ;;
-			L*) bri=$var ;;
-			B*) bat=$var ;;
-			C*) clk=$var ;;
-		esac
-
-		left="$wks"
-
-		center="$ttl"
-
-		right=""
-		((show_ntw)) && right="$right $ntw "
-		((show_vol)) && right="$right $vol "
-		((show_bri)) && right="$right $bri "
-		((show_bat)) && right="$right $bat "
-		((show_clk)) && right="$right $clk "
-
-		printf "%b\n" "%{l}$left%{c}$center%{r}$right"
-	done
-}
-
-draw_bar() {
-	lemonbar -n "$name" \
-		-g "${width}x$height+$offset_x+$offset_y" \
-		-u "$ul_height" \
-		-o "$font_offset" \
-		-f "$font" \
-		-o "$icon_offset" \
-		-f "$icon_font" \
-		-B "$c_bg" \
-		-F "$c_fg"
-}
-
 main() {
 	name=bar
 
@@ -64,9 +17,6 @@ main() {
 	source ~/.config/bar/config
 	source ~/.config/bar/icons
 
-	# set top padding for bar
-	bspc config top_padding "$wmtoppad"
-
 	# source lemons
 	for file in ~/bin/lemons/*; do
 		source "$file"
@@ -74,6 +24,10 @@ main() {
 
 	# awwwyea
 	start_lemons | format_bar | draw_bar | bash &
+
+	# set top padding for laptop display only
+	disp=$(bspc query -M | head -n 1)
+	bspc config -m $disp top_padding $wmtoppad
 
 	# ensure proper fullscreen behavior
 	until bar_id="$(xdo id -a $name)"; do
@@ -83,6 +37,42 @@ main() {
 
 	# don't end the process
 	wait
+}
+
+start_lemons() {
+	for func in wks ttl ntw vol bri bat clk; do
+		eval show=\$show_$func
+		((show)) && $func &
+	done
+}
+
+format_bar() {
+	while read -r event; do
+		var="${event:1}"
+		case $event in
+			W*) wks="$var" ;;
+			T*) ttl="$var" ;;
+			N*) ntw=" $var " ;;
+			V*) vol=" $var " ;;
+			L*) bri=" $var " ;;
+			B*) bat=" $var " ;;
+			C*) clk=" $var " ;;
+		esac
+
+		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$ntw$vol$bri$bat$clk"
+	done
+}
+
+draw_bar() {
+	lemonbar -n "$name" \
+		-g "${width}x$height+$offset_x+$offset_y" \
+		-u "$ul_height" \
+		-o "$font_offset" \
+		-f "$font" \
+		-o "$icon_offset" \
+		-f "$icon_font" \
+		-B "$c_bg" \
+		-F "$c_fg"
 }
 
 main

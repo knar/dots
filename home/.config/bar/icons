@@ -1,6 +1,6 @@
 # bar icons
 
-icon_font="Material Design Icons:size=16"
+icon_font="Material Design Icons:size=15"
 icon_offset=0
 
 source environment-colors
@@ -43,22 +43,37 @@ wks_free_icons=(
 	'\uf3bb'
 )
 
-ntw_wifi_good="%{F$FOREGROUND}\uf5a9%{F-}"
-ntw_wifi_problem="%{F$RED}\uf92a%{F-}"
-ntw_wifi_connecting="%{F$YELLOW}\uf91f%{F-}"
-ntw_wifi_disconnected="%{F$DARKRED}\uf92d%{F-}"
+ntw_wifi_icons=(
+	"%{F$FOREGROUND}\uf5a9%{F-}" # connected
+	"%{F$YELLOW}\uf91f%{F-}"     # connecting
+	"%{F$RED}\uf92d%{F-}"        # disconnected
+)
 
-ntw_wire_good="%{F$FOREGROUND}\uf318%{F-}"
-ntw_wire_problem="%{F$RED}\uf31a%{F-}"
-ntw_wire_connecting="%{F$YELLOW}\uf31a%{F-}"
-ntw_wire_disconnected="%{F$DARKRED}\uf319%{F-}"
+ntw_wire_icons=(
+	"%{F$FOREGROUND}\uf318%{F-}" # connected
+	"%{F$YELLOW}\uf31a%{F-}"     # connecting
+	"%{F$RED}\uf319%{F-}"        # disconnected
+)
 
-#            low      med      high 
-vol_icons=( '\uf57f' '\uf580' '\uf57e' )
+ntw_usb_icons=(
+	"%{F$FOREGROUND}\uf951%{F-}" # connected
+	"%{F$YELLOW}\uf950%{F-}"     # connecting
+	"%{F$RED}\uf94c%{F-}"        # disconnected
+)
+
+vol_icons=(
+	'\uf57f' # low
+	'\uf580' # med
+	'\uf57e' # high
+)
+
 vol_muted_icon='\uf75e'
 
-#            low      med      high
-bri_icons=( '\uf0de' '\uf0df' '\uf0e0' )
+bri_icons=(
+	'\uf0de' # low
+	'\uf0df' # med
+	'\uf0e0' # high
+)
 
 bat_icons=(
 	"%{F$DARKRED}\uf08e%{F-}"

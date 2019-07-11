@@ -1,28 +1,34 @@
 ntw() {
-	dev="wlp3s0"
+	devs=(
+		"wlp3s0"  # wifi
+		"enp0s25" # ethernet
+		"enp0s20" # tethered usb1
+	)
 
-	{ echo "$dev"; nmcli device monitor 2> /dev/null; } |
+	{ echo "${devs[0]}"; nmcli device monitor 2> /dev/null; } |
 		while read -r event; do
 			case $event in
-				"$dev"*)
-					# sometimes state doesnt get
-					# updated, too fast?
-					sleep 0.05
-
+				${devs[0]}*|${devs[1]}*|${devs[2]}*)
 					state=$(nmcli -g STATE g)
 					case $state in
-						connected)    icon=$ntw_wifi_good ;;
-						connecting)   icon=$ntw_wifi_connecting ;;
-						disconnected) icon=$ntw_wifi_disconnected ;;
+						connected*)    state=0 ;;
+						connecting*)   state=1 ;;
+						disconnected*) state=2 ;;
 					esac
 
-					if ((show_ntw_name)); then
+					dev=$(nmcli -g DEVICE d | sed 1q)
+					case $dev in
+						"${devs[0]}") n="${ntw_wifi_icons[state]}" ;;
+						"${devs[1]}") n="${ntw_wire_icons[state]}" ;;
+						"${devs[2]}"*) n="${ntw_usb_icons[state]}" ;;
+					esac
+
+					((show_ntw_name)) && {
 						cons=($(nmcli -g CONNECTION d))
-						con=${cons[0]}
-						echo "N$icon $con"
-					else
-						echo "N$icon"
-					fi
+						n="$n ${cons[0]}"
+					}
+
+					echo "N$n"
 				;;
 			esac
 		done

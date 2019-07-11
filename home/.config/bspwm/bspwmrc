@@ -6,7 +6,7 @@
 # Workspaces, per monitor
 # -
 
-num_displays=$(xrandr -q | grep " connected" | wc -l)
+num_displays=$(bspc query -M | wc -l)
 case "$num_displays" in
 	1)
 		bspc monitor -d 1 2 3 4 5 6 7 8
@@ -23,7 +23,7 @@ esac
 # -
 
 bspc config focus_follows_pointer    true
-bspc config border_width                4
+bspc config border_width                3
 bspc config window_gap                 16
 bspc config split_ratio              0.50
 bspc config single_monocle           true

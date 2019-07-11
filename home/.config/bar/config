@@ -12,11 +12,11 @@ show_clk=1
 # include module details?
 show_ntw_name=0
 show_vol_per=0
-show_bri_per=1
+show_bri_per=0
 show_bat_per=0
 
 # clock settings
-show_date=1
+show_date=0
 show_clk_icon=0
 
 # lemonbar parameters
@@ -28,13 +28,12 @@ height=38
 offset_x=0
 offset_y=0
 ul_height=3
+((wmtoppad=height+offset_y))
 
 # style
 source environment-colors
 c_bg=$BACKGROUND
 c_fg=$FOREGROUND
-c_hl=$DARKCYAN
-# for bspwm padding
-((wmtoppad=height+yoffset))
+c_hl=$DARKBLUE
 
 # vim: ft=sh
