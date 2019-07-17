@@ -7,6 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'xuhdev/vim-latex-live-preview'
 	Plug 'dylanaraps/fff.vim'
 	Plug 'kristijanhusak/vim-hybrid-material'
+	Plug 'hzchirs/vim-material'
 
 call plug#end()
 
@@ -22,12 +23,17 @@ set tabstop=4 shiftwidth=4
 " line numbers
 set number cursorline
 
-" font settings
-let g:enable_italic_font = 1
-
-" colors
+" allow colorscheme colors
 set termguicolors
+
+" hybrid material color settings
+let g:enable_italic_font = 1
 colorscheme hybrid_reverse
+
+" material color settings
+"let g:material_style = 'oceanic'
+"set background=dark
+"colorscheme vim-material
 
 " jk for escape
 inoremap jk <esc>

@@ -5,26 +5,26 @@ show_wks=1
 show_ttl=1
 show_ntw=1
 show_vol=1
-show_bri=0
+show_bri=1
 show_bat=1
 show_clk=1
 
 # include module details?
-show_ntw_name=0
+show_ntw_name=1
 show_vol_per=0
 show_bri_per=0
 show_bat_per=0
 
 # clock settings
-show_date=0
+show_date=1
 show_clk_icon=0
 
 # lemonbar parameters
-font="monospace:size=13"
+font="monospace:size=12"
 font_offset=0
 
 width=1920
-height=38
+height=32
 offset_x=0
 offset_y=0
 ul_height=3

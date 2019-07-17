@@ -15,7 +15,7 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 #fff
-export PATH=$PATH:$HOME/bin/fff
+export PATH=$PATH:$HOME/src/fff
 export FFF_CD_FILE=~/.cache/fff/fff_d
 export FFF_COL1=4
 export FFF_FAV1=~/dev
