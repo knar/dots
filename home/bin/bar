@@ -19,9 +19,9 @@ main() {
 
 	# source lemons
 	for file in ~/bin/lemons/*; do
-		source "$file"
+			source "$file"
 	done
-
+	
 	# awwwyea
 	start_lemons | format_bar | draw_bar | bash &
 
@@ -48,18 +48,19 @@ start_lemons() {
 
 format_bar() {
 	while read -r event; do
-		var="${event:1}"
 		case $event in
-			W*) wks="$var" ;;
-			T*) ttl="$var" ;;
-			N*) ntw=" $var " ;;
-			V*) vol=" $var " ;;
-			L*) bri=" $var " ;;
-			B*) bat=" $var " ;;
-			C*) clk=" $var " ;;
+			W*) wks="${event#?}" ;;
+			T*) ttl="${event#?}" ;;
+			N*) ntw="${event#?}" ;;
+			V*) vol="${event#?}" ;;
+			L*) bri="${event#?}" ;;
+			B*) bat="${event#?}" ;;
+			C*) clk="${event#?}" ;;
 		esac
 
-		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$ntw$vol$bri$bat$clk"
+		stats="$ntw  $vol  $bri  $bat  $clk "
+
+		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$stats"
 	done
 }
 

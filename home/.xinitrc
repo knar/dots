@@ -2,13 +2,13 @@
 #
 # ~/.xinitrc
 
-xset r rate 180 50
+xset r rate 200 40
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
 xrdb ~/.Xresources
 
 sxhkd &
-bar &
+#bar &
 unclutter &
 redshift &
 compton &

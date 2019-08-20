@@ -1,7 +1,7 @@
 clk() {
 	while true; do
 		if ((show_date)); then
-			printf -v clk '%(%a %b %d, %H:%M)T\n' '-1'
+			printf -v clk '%(%a %b %d - %H:%M)T\n' '-1'
 			#printf -v clk '%(%a, %H:%M)T\n' '-1'
 		else
 			printf -v clk '%(%H:%M)T\n' '-1'

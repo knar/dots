@@ -24,8 +24,8 @@ ntw() {
 					esac
 
 					((show_ntw_name)) && {
-						cons=($(nmcli -g CONNECTION d))
-						n="$n ${cons[0]}"
+						con=$(nmcli -g CONNECTION d | head -n 1)
+						n="$n $con"
 					}
 
 					echo "N$n"

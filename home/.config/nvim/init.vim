@@ -5,9 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'junegunn/fzf.vim'
 	Plug 'xuhdev/vim-latex-live-preview'
-	Plug 'dylanaraps/fff.vim'
 	Plug 'kristijanhusak/vim-hybrid-material'
-	Plug 'hzchirs/vim-material'
 
 call plug#end()
 
@@ -23,6 +21,12 @@ set tabstop=4 shiftwidth=4
 " line numbers
 set number cursorline
 
+" buffers
+set switchbuf=useopen
+nnoremap <c-j> :bnext<CR>
+nnoremap <c-k> :bprevious<CR>
+nnoremap <c-h> <c-^>
+
 " allow colorscheme colors
 set termguicolors
 
@@ -30,19 +34,11 @@ set termguicolors
 let g:enable_italic_font = 1
 colorscheme hybrid_reverse
 
-" material color settings
-"let g:material_style = 'oceanic'
-"set background=dark
-"colorscheme vim-material
-
 " jk for escape
 inoremap jk <esc>
 
-" f to open fzf
-nnoremap f :FZF<CR>
-
-" F to open fff
-nnoremap F :F<CR>
+" z to open fzf
+nnoremap z :FZF<CR>
 
 " invis chars for list mode
 set showbreak=↪\
