@@ -3,6 +3,7 @@
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
+	Plug 'sheerun/vim-polyglot'
 	Plug 'sainnhe/gruvbox-material'
 	Plug 'kristijanhusak/vim-hybrid-material'
 call plug#end()

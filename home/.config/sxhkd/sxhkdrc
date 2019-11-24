@@ -3,10 +3,10 @@
 # -
 
 super + w
-	chromium
+	firefox
 
 super + Return
-	st -e tmux
+	alacritty -e tmux
 
 super + b
 	toggle-bar

@@ -58,9 +58,9 @@ format_bar() {
 			C*) clk="${event#?}" ;;
 		esac
 
-		stats="$ntw  $vol  $bri  $bat "
+		stats="$ntw  $vol  $bri  $bat $clk "
 
-		printf "%b\n" "%{l}$wks $ttl%{c}$clk%{r}$stats"
+		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$stats"
 	done
 }
 
@@ -76,4 +76,5 @@ draw_bar() {
 		-F "$c_fg"
 }
 
+sleep 0.1
 main

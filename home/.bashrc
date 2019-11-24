@@ -5,10 +5,10 @@
 # Prompt
 PS1='\[\e[92m\]\w \[\e[31m\]> \[\e[0m\]'
 
-#promptcmd() {
-#	echo -ne "\033]0;${PWD/$HOME/\~}\007"
-#}
-#PROMPT_COMMAND=promptcmd
+promptcmd() {
+	echo -ne "\033]0;${PWD/$HOME/\~}\007"
+}
+PROMPT_COMMAND=promptcmd
 
 # Aliases
 alias c='clear'
