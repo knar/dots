@@ -17,10 +17,11 @@ show_bat_per=1
 
 # clock settings
 show_date=1
-show_clk_icon=1
+show_clk_icon=0
 
 # lemonbar parameters
-font="monospace:size=12"
+#font="sans:pixelsize=16"
+font="mono:pixelsize=16"
 font_offset=0
 
 width=1920

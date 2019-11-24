@@ -2,11 +2,9 @@
 
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
-
 	Plug 'junegunn/fzf.vim'
-	Plug 'xuhdev/vim-latex-live-preview'
+	Plug 'sainnhe/gruvbox-material'
 	Plug 'kristijanhusak/vim-hybrid-material'
-
 call plug#end()
 
 " encoding
@@ -19,7 +17,17 @@ set title
 set tabstop=4 shiftwidth=4
 
 " line numbers
-set number cursorline
+set number relativenumber cursorline
+
+" invis chars for list mode
+set showbreak=↪
+set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
+
+" set colorscheme
+set termguicolors
+set background=dark
+let g:gruvbox_material_background= 'hard'
+colorscheme gruvbox-material
 
 " buffers
 set switchbuf=useopen
@@ -27,29 +35,8 @@ nnoremap <c-j> :bnext<CR>
 nnoremap <c-k> :bprevious<CR>
 nnoremap <c-h> <c-^>
 
-" allow colorscheme colors
-set termguicolors
-
-" hybrid material color settings
-let g:enable_italic_font = 1
-colorscheme hybrid_reverse
-
 " jk for escape
 inoremap jk <esc>
 
 " z to open fzf
 nnoremap z :FZF<CR>
-
-" invis chars for list mode
-set showbreak=↪\
-set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
-
-" Ocaml
-autocmd FileType ml set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-
-" fff settings
-let g:fff#split = "24vnew"
-let g:fff#split_direction = "nosplitbelow nosplitright"

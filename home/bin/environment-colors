@@ -20,3 +20,7 @@ export BLUE=$(xrdb -query | grep 'color12:'| awk '{print $NF}')
 export MAGENTA=$(xrdb -query | grep 'color13:'| awk '{print $NF}')
 export CYAN=$(xrdb -query | grep 'color14:'| awk '{print $NF}')
 export WHITE=$(xrdb -query | grep 'color15:'| awk '{print $NF}')
+
+export bar_bgcolor=$BACKGROUND
+export bar_fgcolor=$FOURGROUND
+export bar_hlcolor=$DARKBLUE

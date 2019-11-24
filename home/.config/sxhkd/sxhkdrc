@@ -6,7 +6,7 @@ super + w
 	chromium
 
 super + Return
-	st
+	st -e tmux
 
 super + b
 	toggle-bar

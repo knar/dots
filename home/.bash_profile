@@ -1,28 +1,15 @@
 # ~/.bash_profile
 
-# Env vars
+source ~/.bashrc
+
 export XDG_CONFIG_HOME=$HOME/.config
-export GOPATH=$HOME/dev/go
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.npm-global/bin
+export GOPATH=$HOME/dev/go
+export PATH=$PATH:$GOPATH/bin
 export BROWSER="chromium"
 export EDITOR="nvim"
 export TERMINAL="st"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-
-# opam
-test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-#fff
-export PATH=$PATH:$HOME/src/fff
-export FFF_CD_FILE=~/.cache/fff/fff_d
-export FFF_COL1=4
-export FFF_FAV1=~/dev
-export FFF_FAV2=~/.config
-export FFF_FAV3=~/dls
-export FFF_FAV4=~/pics
-export FFF_FAV5=~/docs/uni/spring19
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \

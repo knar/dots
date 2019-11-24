@@ -2,16 +2,17 @@
 #
 # ~/.xinitrc
 
-xset r rate 200 40
+xset r rate 200 50
+xset m 1/1 0
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
 xrdb ~/.Xresources
 
 sxhkd &
-#bar &
+bar &
 unclutter &
 redshift &
 compton &
-feh --bg-fill --no-fehbg ~/pics/wallpapers/coast.jpg
+feh --bg-fill --no-fehbg ~/pics/wallpapers/beach.jpg
 
 exec bspwm
