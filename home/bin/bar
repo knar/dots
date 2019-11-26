@@ -49,18 +49,16 @@ start_lemons() {
 format_bar() {
 	while read -r event; do
 		case $event in
-			W*) wks="${event#?}" ;;
-			T*) ttl="${event#?}" ;;
-			N*) ntw="${event#?}" ;;
-			V*) vol="${event#?}" ;;
-			L*) bri="${event#?}" ;;
-			B*) bat="${event#?}" ;;
-			C*) clk="${event#?}" ;;
+			W*) wks=" ${event#?} " ;;
+			T*) ttl=" ${event#?} " ;;
+			N*) ntw=" ${event#?} " ;;
+			V*) vol=" ${event#?} " ;;
+			L*) bri=" ${event#?} " ;;
+			B*) bat=" ${event#?} " ;;
+			C*) clk=" ${event#?} " ;;
 		esac
 
-		stats="$ntw  $vol  $bri  $bat $clk "
-
-		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$stats"
+		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$ntw$vol$bri$bat$clk"
 	done
 }
 

@@ -5,7 +5,7 @@ icon_offset=-1
 
 source environment-colors
 
-wks_foc="%{F$DARKBLUE}\uf9dd%{F-}"
+wks_foc="%{F$GREEN}\uf9dd%{F-}"
 wks_occ="%{F$DARKWHITE}\uf9dd%{F-}"
 wks_urg="%{F$RED}\uf9dd%{F-}"
 wks_free="%{F$DARKWHITE}\uf9de%{F-}"
