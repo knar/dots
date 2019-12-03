@@ -7,9 +7,9 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.npm-global/bin
 export GOPATH=$HOME/dev/go
 export PATH=$PATH:$GOPATH/bin
-export BROWSER="chromium"
+export BROWSER="firefox"
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 
 # Startx if tty1
 [[ "$(tty)" = "/dev/tty1" ]] && \

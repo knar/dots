@@ -36,6 +36,12 @@ nnoremap <c-j> :bnext<CR>
 nnoremap <c-k> :bprevious<CR>
 nnoremap <c-h> <c-^>
 
+" space for leader
+let mapleader=" "
+
+" space + ls to quiclky change buffers
+nnoremap <leader>ls :ls<cr>:b<space>
+
 " jk for escape
 inoremap jk <esc>
 

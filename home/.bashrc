@@ -3,7 +3,7 @@
 [[ $- != *i* ]] && return
 
 # Prompt
-PS1='\[\e[92m\]\w \[\e[33m\]> \[\e[0m\]'
+PS1='\[\e[92m\]\w \[\e[91m\]> \[\e[0m\]'
 
 promptcmd() {
 	echo -ne "\033]0;${PWD/$HOME/\~}\007"
@@ -12,6 +12,7 @@ PROMPT_COMMAND=promptcmd
 
 # Aliases
 alias c='clear'
+alias cat='bat'
 alias ebsp='nvim ~/.config/bspwm/bspwmrc'
 alias ehk='nvim ~/.config/sxhkd/sxhkdrc'
 alias ls='ls --group-directories-first --color=always'

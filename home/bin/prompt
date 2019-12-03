@@ -8,7 +8,8 @@ source ~/.config/bar/config
 label=$1
 shift
 
-[[ $(echo -e "No\nYes" | dmenu -fn "$font" \
+[[ $(echo -e "No\nYes" | dmenu \
+	-fn "$font" \
 	-w "$width" \
 	-h "$height" \
 	-x "$offset_x" \
