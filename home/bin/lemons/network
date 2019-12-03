@@ -5,32 +5,29 @@ ntw() {
 		"enp0s20" # tethered usb1
 	)
 
-	{ echo "${devs[0]}"; nmcli device monitor 2> /dev/null; } |
+	{ echo "${devs[0]}"; nmcli monitor 2> /dev/null; } |
 		while read -r event; do
-			case $event in
-				${devs[0]}*|${devs[1]}*|${devs[2]}*)
-					state=$(nmcli -g STATE g)
-					case $state in
-						connected*)    state=0 ;;
-						connecting*)   state=1 ;;
-						disconnected*) state=2 ;;
-					esac
-
-					dev=$(nmcli -g DEVICE d | sed 1q)
-					case $dev in
-						"${devs[0]}") n="${ntw_wifi_icons[state]}" ;;
-						"${devs[1]}") n="${ntw_wire_icons[state]}" ;;
-						"${devs[2]}"*) n="${ntw_usb_icons[state]}" ;;
-					esac
-
-					((show_ntw_name)) && {
-						con=$(nmcli -g CONNECTION d | head -n 1)
-						n="$n $con"
-					}
-
-					echo "N$n"
-				;;
+			state=$(nmcli -g STATE g)
+			case $state in
+				"connected") state=0 ;;
+				"connecting") state=1 ;;
+				"connected "*) state=1 ;;
+				"disconnected") state=2 ;;
 			esac
+
+			dev=$(nmcli -g DEVICE d | sed 1q)
+			case $dev in
+				"${devs[0]}") n="${ntw_wifi_icons[state]}" ;;
+				"${devs[1]}") n="${ntw_wire_icons[state]}" ;;
+				"${devs[2]}"*) n="${ntw_usb_icons[state]}" ;;
+			esac
+
+			((show_ntw_name)) && {
+				con=$(nmcli -g CONNECTION d | head -n 1)
+				n="$n $con"
+			}
+
+			echo "N$n"
 		done
 }
 
