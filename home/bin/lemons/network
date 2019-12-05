@@ -17,9 +17,17 @@ ntw() {
 
 			dev=$(nmcli -g DEVICE d | sed 1q)
 			case $dev in
-				"${devs[0]}") n="${ntw_wifi_icons[state]}" ;;
-				"${devs[1]}") n="${ntw_wire_icons[state]}" ;;
-				"${devs[2]}"*) n="${ntw_usb_icons[state]}" ;;
+				"${devs[0]}")
+					if ((state == 0)); then
+						sig=$(nmcli d w | grep "^\*" | awk '{print $7}')
+						((sig=sig/20))
+						n="${ntw_wifi_strength_icons[$sig]}"
+					else
+						n="${ntw_wifi_icons[$state]}"
+					fi
+				;;
+				"${devs[1]}") n="${ntw_wire_icons[$state]}" ;;
+				"${devs[2]}"*) n="${ntw_usb_icons[$state]}" ;;
 			esac
 
 			((show_ntw_name)) && {

@@ -49,7 +49,7 @@ start_lemons() {
 format_bar() {
 	while read -r event; do
 		case $event in
-			W*) wks="${event#?} " ;;
+			W*) wks="${event#?}" ;;
 			T*) ttl=" ${event#?} " ;;
 			N*) ntw=" ${event#?} " ;;
 			V*) vol=" ${event#?} " ;;

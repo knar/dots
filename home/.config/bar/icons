@@ -49,6 +49,14 @@ ntw_wifi_icons=(
 	"%{F$RED}\uf92d%{F-}"        # disconnected
 )
 
+ntw_wifi_strength_icons=(
+	"%{F$FOREGROUND}\uf92e%{F-}" # 0
+	"%{F$FOREGROUND}\uf91e%{F-}" # 1
+	"%{F$FOREGROUND}\uf921%{F-}" # 2
+	"%{F$FOREGROUND}\uf924%{F-}" # 3
+	"%{F$FOREGROUND}\uf927%{F-}" # 4
+)
+
 ntw_wire_icons=(
 	"%{F$FOREGROUND}\uf318%{F-}" # connected
 	"%{F$YELLOW}\uf31a%{F-}"     # connecting
