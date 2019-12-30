@@ -18,7 +18,7 @@ set title
 set tabstop=4 shiftwidth=4
 
 " line numbers
-set number relativenumber cursorline
+set number cursorline
 
 " invis chars for list mode
 set showbreak=↪

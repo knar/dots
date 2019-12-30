@@ -1,7 +1,7 @@
 # bar icons
 
 icon_font="Material Design Icons:size=14"
-icon_offset=-3
+icon_offset=-1
 
 source environment-colors
 

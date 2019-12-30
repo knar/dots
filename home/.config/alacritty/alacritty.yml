@@ -7,8 +7,8 @@ window:
     lines: 24
 
   padding:
-    x: 16
-    y: 16
+    x: 32
+    y: 32
 
   decorations: none
 
@@ -19,29 +19,31 @@ draw_bold_text_with_bright_colors: false
 scrolling:
   history: 10000
   multiplier: 3
-  multiplier: 3
   auto_scroll: true
 
 font:
   normal:
-    family: Meslo LG M
+    family: SF Mono
     style: Regular
   bold:
-    family: Meslo LG M
+    family: SF Mono
     style: Bold
   italic:
-    family: Meslo LG M
+    family: SF Mono
     style: Italic
+  bold_italic:
+    family: SF Mono
+    style: Bold Italic
 
-  size: 14.0
+  size: 15.0
 
   offset:
     x: 0
-    y: 0
+    y: 2
 
   glyph_offset:
     x: 0
-    y: 0
+    y: 1
 
 colors:
   primary:

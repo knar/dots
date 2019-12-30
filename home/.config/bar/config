@@ -1,5 +1,5 @@
 # bar config
-
+bar_fifo=~/.cache/bar_fifo
 # include module?
 show_wks=1
 show_ttl=1
@@ -20,7 +20,7 @@ show_date=1
 show_clk_icon=0
 
 # lemonbar parameters
-font="mono:size=14"
+font="mono:size=13"
 font_offset=-0
 
 width=1920
