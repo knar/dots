@@ -21,6 +21,6 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
 ! color scheme
-#include ".config/xres/colors/knarly"
+#include ".config/xres/colors/gruv-mat-modified"
 
 ! vim: ft=xdefaults

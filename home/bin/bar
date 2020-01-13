@@ -51,7 +51,7 @@ format_bar() {
 		msg="${event#?}"
 		case $event in
 			W*) wks="$msg" ;;
-			T*) ttl=" $msg " ;;
+			T*) ttl="$msg" ;;
 			N*) ntw=" $msg " ;;
 			V*) vol=" $msg " ;;
 			L*) bri=" $msg " ;;
@@ -59,7 +59,7 @@ format_bar() {
 			C*) clk=" $msg " ;;
 		esac
 
-		printf "%b\n" "%{l}$wks%{c}$ttl%{r}$ntw$vol$bri$bat$clk"
+		printf "%b\n" "%{l}$wks$ttl%{c}$clk%{r}$ntw$vol$bri$bat"
 	done
 }
 

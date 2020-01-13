@@ -7,34 +7,34 @@ ntw() {
 
 	{ echo "${devs[0]}"; nmcli monitor 2> /dev/null; } |
 		while read -r event; do
-			state=$(nmcli -g STATE g)
-			case $state in
-				"connected") state=0 ;;
-				"connecting") state=1 ;;
-				"connected "*) state=1 ;;
-				"disconnected") state=2 ;;
-			esac
+		#	state=$(nmcli -g STATE g)
+		#	case $state in
+		#		"connected") state=0 ;;
+		#		"connecting") state=1 ;;
+		#		"connected "*) state=1 ;;
+		#		"disconnected") state=2 ;;
+		#	esac
 
-			dev=$(nmcli -g DEVICE d | sed 1q)
-			case $dev in
-				"${devs[0]}")
-					if ((state == 0)); then
-						sig=$(nmcli d w | grep "^\*" | awk '{print $7}')
-						((sig=sig/20))
-						n="${ntw_wifi_strength_icons[$sig]}"
-					else
-						n="${ntw_wifi_icons[$state]}"
-					fi
-				;;
-				"${devs[1]}") n="${ntw_wire_icons[$state]}" ;;
-				"${devs[2]}"*) n="${ntw_usb_icons[$state]}" ;;
-			esac
+		#	dev=$(nmcli -g DEVICE d | sed 1q)
+		#	case $dev in
+		#		"${devs[0]}")
+		#			if ((state == 0)); then
+		#				sig=$(nmcli d w | grep "^\*" | awk '{print $7}')
+		#				((sig=sig/20))
+		#				n="${ntw_wifi_strength_icons[$sig]}"
+		#			else
+		#				n="${ntw_wifi_icons[$state]}"
+		#			fi
+		#		;;
+		#		"${devs[1]}") n="${ntw_wire_icons[$state]}" ;;
+		#		"${devs[2]}"*) n="${ntw_usb_icons[$state]}" ;;
+		#	esac
 
-			((show_ntw_name)) && {
-				con=$(nmcli -g CONNECTION d | head -n 1)
-				n="$n $con"
-			}
-
+		#	((show_ntw_name)) && {
+		#		con=$(nmcli -g CONNECTION d | head -n 1)
+		#		n="$n $con"
+		#	}
+			n=$(nmcli -g STATE g)
 			echo "N$n"
 		done
 }

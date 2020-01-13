@@ -24,22 +24,21 @@ set number cursorline
 set showbreak=↪
 set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
 
-" set colorscheme
+" visuals
 set termguicolors
 set background=dark
-let g:gruvbox_material_background= 'hard'
+let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
-
-" buffers
-set switchbuf=useopen
-nnoremap <c-j> :bnext<CR>
-nnoremap <c-k> :bprevious<CR>
-nnoremap <c-h> <c-^>
 
 " space for leader
 let mapleader=" "
 
-" space + ls to quiclky change buffers
+" better split defaults
+set splitbelow
+set splitright
+
+" buffers
+set switchbuf=useopen
 nnoremap <leader>ls :ls<cr>:b<space>
 
 " jk for escape
@@ -47,3 +46,21 @@ inoremap jk <esc>
 
 " z to open fzf
 nnoremap z :FZF<CR>
+
+" split navigation
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
+" split resizing
+nnoremap - <C-W><
+nnoremap = <C-W>>
+nnoremap _ <C-W>-
+nnoremap + <C-W>+
+
+" intuitive jump to start/end of line
+nnoremap H 0
+nnoremap L $
+vnoremap H 0
+vnoremap L $
