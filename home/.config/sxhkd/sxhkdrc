@@ -1,29 +1,19 @@
-# -----
 # Shortcuts
-# -
 
 super + w
-	firefox
+	firefox-developer-edition
 
 super + Return
-	alacritty -e tmux
-
-super + b
-	toggle-bar
-
-super + d
-	launcher
+	alacritty -e tmux -f ~/.config/tmux/tmux.conf
 
 # reload sxhkd config
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# -----
-# Media keys
-# -
+# Function keys
 
 XF86Audio{Mute,LowerVolume,RaiseVolume}
-	vol {m,-,+}
+	pamixer {-t,-d 5,-i 5}
 
 XF86AudioMicMute
 	pactl set-source-mute 1 toggle
@@ -43,15 +33,6 @@ super + alt + Escape
 
 super + {_,shift + }q
 	bspc node -{c,k}
-
-super + m
-	bspc desktop -l next
-
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
-super + g
-	bspc node -s biggest
 
 super + equal 
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 4))
@@ -81,7 +62,7 @@ super + ctrl + {m,x,y,z}
 # focus/swap
 # -
 
-# focus the node in the given direction
+# focus/swap the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 

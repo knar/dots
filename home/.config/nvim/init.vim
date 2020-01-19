@@ -1,26 +1,28 @@
 " vimrc
 
+" ensure vim-plug is installed
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	augroup PLUG
+		au!
+		autocmd VimEnter * PlugInstall
+    augroup END
+endif
+
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
-	Plug 'junegunn/fzf.vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'sainnhe/gruvbox-material'
-	Plug 'kristijanhusak/vim-hybrid-material'
+	Plug 'cloudhead/neovim-fuzzy'
 call plug#end()
+
 
 " encoding
 set encoding=utf-8
-
-" update window title
 set title
-
-" tabs
 set tabstop=4 shiftwidth=4
-
-" line numbers
-set number cursorline
-
-" invis chars for list mode
+set number relativenumber cursorline
 set showbreak=↪
 set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
 
@@ -38,14 +40,13 @@ set splitbelow
 set splitright
 
 " buffers
-set switchbuf=useopen
 nnoremap <leader>ls :ls<cr>:b<space>
 
 " jk for escape
 inoremap jk <esc>
 
-" z to open fzf
-nnoremap z :FZF<CR>
+" fzy to open files
+nnoremap <leader>e :FuzzyOpen<CR>
 
 " split navigation
 nnoremap <C-H> <C-W><C-H>

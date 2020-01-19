@@ -1,22 +1,12 @@
 #!/bin/sh
 #
-# bspwm config
+# bspwmrc
 
 # -----
 # Workspaces, per monitor
 # -
 
-num_displays=$(bspc query -M | wc -l)
-case "$num_displays" in
-	1)
-		bspc monitor -d 1 2 3 4 5 6
-	;;
-
-	2)
-		bspc monitor ^1 -d 1 2 3 4 5
-		bspc monitor ^2 -d 6 7 8 9 0
-	;;
-esac
+bspc monitor -d 1 2 3 4 5 6
 
 # -----
 # Configuration
@@ -25,7 +15,7 @@ esac
 bspc config focus_follows_pointer    true
 bspc config border_width                3
 bspc config window_gap                 16
-bspc config split_ratio              0.50
+bspc config split_ratio               0.5
 bspc config single_monocle           true
 bspc config borderless_monocle       true
 bspc config gapless_monocle          true
@@ -40,7 +30,3 @@ bspc config focused_border_color  "$DARKBLUE"
 bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color   "$DARKBLUE"
 bspc config presel_feedback_color    "$WHITE"
-
-for bin in panel; do
-	pgrep -x "$bin" > /dev/null || "$bin" &
-done

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#
-# Change volume
-
-case "$1" in
-	i|inc|up|+)      pamixer -i 5 ;;
-	d|dec|down|-)    pamixer -d 5 ;;
-	m|mute|t|toggle) pamixer -t ;;
-esac
