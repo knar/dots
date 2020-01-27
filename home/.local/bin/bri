@@ -1,0 +1,31 @@
+#!/usr/bin/python
+
+import sys
+
+steps = 20
+step = 1 / steps
+deltas = { '+': step, '-': -step }
+
+if len(sys.argv) != 2 or sys.argv[1] not in deltas:
+    print('Usage: bri [+, -]')
+    exit()
+
+bri_path = '/sys/class/backlight/intel_backlight/brightness'
+max_path = '/sys/class/backlight/intel_backlight/max_brightness'
+
+def readnum(path):
+    return int(open(path).readline().rstrip())
+
+def writenum(path, num):
+    open(path, 'w').write(str(num))
+
+def roundto(x, base):
+    return base * round(x / base)
+
+max_val = readnum(max_path)
+cur = readnum(bri_path)
+
+new = round((roundto(cur / max_val, step) + deltas[sys.argv[1]]) * max_val)
+new = max(min(max_val, new), round(step * max_val))
+
+writenum(bri_path, new)

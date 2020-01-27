@@ -3,7 +3,7 @@
 source ~/.bashrc
 
 export XDG_CONFIG_HOME=$HOME/.config
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
 export BROWSER="firefox-developer-edition"
 export EDITOR="nvim"
 export TERMINAL="alacritty"

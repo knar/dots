@@ -1,0 +1,12 @@
+#!/bin/sh
+
+source ~/.config/bar/config
+
+[ "$(echo -e "No\nYes" | dmenu \
+	-h "$height" \
+	-fn "$font" \
+	-nb "$color0" \
+	-nf "$color15" \
+	-sb "$color2" \
+	-sf "$color0" \
+	-i -p "$1" )" = "Yes" ] && $2

@@ -9,8 +9,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'sheerun/vim-polyglot'
-	Plug 'sainnhe/gruvbox-material'
 	Plug 'cloudhead/neovim-fuzzy'
+	Plug 'itchyny/lightline.vim'
+	Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 call plug#end()
 
 set encoding=utf-8
@@ -22,9 +23,10 @@ set listchars=tab:→\ ,trail:·,eol:¬,nbsp:␣
 set splitbelow
 set splitright
 set termguicolors
-set background=dark
 let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
+set noshowmode
 
 let mapleader=" "
 nnoremap <leader>ls :ls<cr>:b<space>

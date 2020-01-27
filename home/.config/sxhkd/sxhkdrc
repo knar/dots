@@ -1,8 +1,8 @@
 super + w
 	firefox-developer-edition
 
-super + Return
-	alacritty -e tmux -f ~/.config/tmux/tmux.conf
+super + {_,shift + }Return
+	alacritty{ -e tmux -f ~/.config/tmux/tmux.conf,_}
 
 XF86Search
 	launcher
@@ -11,6 +11,8 @@ XF86Search
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + alt + Escape
+	prompt "Logout?" "bspc quit"
 
 XF86Audio{Mute,LowerVolume,RaiseVolume}
 	pamixer {-t,-d 5,-i 5}
