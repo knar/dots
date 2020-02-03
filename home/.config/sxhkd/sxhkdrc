@@ -1,5 +1,5 @@
 super + w
-	firefox-developer-edition
+	brave
 
 super + {_,shift + }Return
 	alacritty{ -e tmux -f ~/.config/tmux/tmux.conf,_}
