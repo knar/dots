@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
-c () {
-	echo -e "\e[$1"{0..7}"m  \e[0m"
-}
+function color
+    echo -e "\e[$argv[1]"(seq 0 7)"m  \e[0m"
+end
 
 echo
-c 4
-c 10
+color 4
+color 10
 echo
