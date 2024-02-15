@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+switch $argv[1]
+    case up
+        brightnessctl -e s +3%
+    case down
+        brightnessctl -e s 3%-
+end
+
+set val (math round 100 x (brightnessctl g) / (brightnessctl m))
+
+# notify-send -t 2000 -h string:x-dunst-stack-tag:light -h int:value:$val " $val%"
+notify-send -t 2000 -h string:x-dunst-stack-tag:light " $val%"

@@ -1,0 +1,28 @@
+#!/usr/bin/env fish
+
+set path /sys/class/power_supply
+
+function get_battery
+    set bat0_now (cat $path/BAT0/energy_now)
+    set bat0_full (cat $path/BAT0/energy_full)
+    set bat1_now (cat $path/BAT1/energy_now)
+    set bat1_full (cat $path/BAT1/energy_full)
+    set capacity (math "round 100 * ($bat0_now + $bat1_now) / ($bat0_full + $bat1_full)")
+    echo $capacity
+end
+
+function get_icon
+    set icons     
+    set icon $icons[(math ceil $argv[1] / 20)]
+    set charging (cat $path/AC/online)
+    if test $charging -eq 1
+        echo " $icon"
+    else
+        echo $icon
+    end
+end
+
+set bat (get_battery)
+set icon (get_icon $bat)
+# notify-send -t 2000 -h string:x-dunst-stack-tag:battery -h int:value:$bat "$icon  $bat%"
+notify-send -t 2000 -h string:x-dunst-stack-tag:battery "$icon  $bat%"
