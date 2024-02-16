@@ -1,0 +1,96 @@
+@define-color bg      #1f1f28;
+@define-color crust   #2a2a37;
+@define-color fg      #dcd7ba;
+@define-color red     #c34043;
+@define-color yellow  #e6c384;
+@define-color blue    #7e9cd8;
+@define-color green   #a7c080;
+@define-color muted   #495156;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: sans, monospace;
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  color: @fg;
+  background: @bg;
+  transition: background 84ms ease;
+}
+
+/* window#waybar.empty, */
+/* window#waybar.floating { */
+/*   background: transparent; */
+/*   transition: background 84ms ease; */
+/* } */
+/* window#waybar.empty #window { */
+/*   background: transparent; */
+/* } */
+
+tooltip {
+  background: @bg;
+  border-radius: 12px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @crust;
+}
+
+#window,
+#pulseaudio,
+#network,
+#workspaces,
+#cpu,
+#clock,
+#memory,
+#tray,
+#backlight,
+#custom-swaync,
+#battery {
+  color: @fg;
+  padding: 4px 6px;
+  margin: 4px 4px;
+  border-radius: 16px;
+}
+
+#tray {
+  margin-right: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#workspaces {
+  padding: 4px 6px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 0;
+  color: @blue;
+}
+
+#workspaces button.empty {
+  color: @muted;
+}
+
+#workspaces button.active {
+  color: @green;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: @bg;
+  color: @fg;
+}
+
+#clock {
+  margin-right: 6px;
+}
