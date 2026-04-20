@@ -1,2 +1,2 @@
-# configs
+# dots
 managed with stow
