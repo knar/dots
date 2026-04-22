@@ -4,6 +4,13 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.winborder = "rounded"
 
+vim.diagnostic.config({
+	severity_sort = true,
+	jump = { float = true, wrap = true },
+	virtual_text = { prefix = "●" },
+	signs = { text = { " ", " ", " ", " " } },
+})
+
 vim.pack.add({
 	"https://github.com/max397574/better-escape.nvim",
 	"https://github.com/echasnovski/mini.nvim",
@@ -12,6 +19,7 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/j-hui/fidget.nvim",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/rebelot/kanagawa.nvim",
 })
 
@@ -87,19 +95,6 @@ require("kanagawa").setup({
 -- theme
 vim.cmd.colorscheme("kanagawa")
 
--- diagnostics icons
-vim.diagnostic.config({
-	virtual_text = { prefix = "●" },
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-		},
-	},
-})
-
 -- keymaps
 vim.keymap.set("n", "<S-h>", ":bprev<cr>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-l>", ":bnext<cr>", { desc = "Next buffer" })
@@ -127,6 +122,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf }
 		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+		vim.keymap.set("n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 	end,
 })
 
