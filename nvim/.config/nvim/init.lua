@@ -26,13 +26,6 @@ vim.pack.add({
 require("better_escape").setup({})
 
 require("mini.basics").setup({ options = { extra_ui = true } })
-require("mini.move").setup({})
-require("mini.pairs").setup({})
-require("mini.surround").setup({})
-require("mini.icons").setup({})
-require("mini.statusline").setup({})
-require("mini.pick").setup({})
-require("mini.files").setup({})
 require("mini.clue").setup({
 	triggers = {
 		{ mode = { "n", "x" }, keys = "<Leader>" },
@@ -40,6 +33,14 @@ require("mini.clue").setup({
 		{ mode = "n", keys = "<C-w>" },
 	},
 })
+require("mini.diff").setup({ view = { style = "sign" } })
+require("mini.files").setup({})
+require("mini.icons").setup({})
+require("mini.move").setup({})
+require("mini.pairs").setup({})
+require("mini.pick").setup({})
+require("mini.statusline").setup({})
+require("mini.surround").setup({})
 
 require("blink.cmp").setup({
 	keymap = {
