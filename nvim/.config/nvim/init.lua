@@ -33,7 +33,7 @@ require("mini.clue").setup({
 		{ mode = "n", keys = "<C-w>" },
 	},
 })
-require("mini.diff").setup({ view = { style = "sign" } })
+require("mini.diff").setup({})
 require("mini.files").setup({})
 require("mini.icons").setup({})
 require("mini.move").setup({})
