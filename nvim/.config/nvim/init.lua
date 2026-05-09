@@ -20,6 +20,7 @@ vim.pack.add({
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/j-hui/fidget.nvim",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	"https://github.com/brenoprata10/nvim-highlight-colors",
 	"https://github.com/rebelot/kanagawa.nvim",
 })
 
@@ -67,6 +68,8 @@ require("conform").setup({
 
 require("fidget").setup({})
 
+require("nvim-highlight-colors").setup({})
+
 require("kanagawa").setup({
 	theme = "dragon",
 	background = { dark = "dragon" },
@@ -111,6 +114,11 @@ vim.keymap.set("n", "<leader>/", "<cmd>Pick grep_live<cr>", { desc = "Search in 
 vim.keymap.set("n", "<leader>sh", "<cmd>Pick help<cr>", { desc = "Search help pages" })
 
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+
+vim.keymap.set("n", "<leader>qq", vim.diagnostic.setqflist, { desc = "Show quickfix list" })
+vim.keymap.set("n", "<leader>qe", function()
+	vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Show quickfix list (errors)" })
 
 vim.keymap.set("n", "<leader>e", function()
 	local buf_name = vim.api.nvim_buf_get_name(0)
