@@ -1,0 +1,20 @@
+font-size = 12
+font-family = Input Mono Narrow
+adjust-cell-height = 3
+
+theme = dark:Kanagawa Dragon,light:Kanagawa Lotus
+
+cursor-color = cell-foreground
+cursor-text = cell-background
+
+gtk-titlebar-hide-when-maximized = true
+
+window-width = 80
+window-height = 30
+
+window-padding-x = 8
+window-padding-y = 8
+window-padding-balance = true
+
+mouse-hide-while-typing
+
