@@ -1,12 +1,14 @@
+vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.winborder = "rounded"
+vim.o.scrolloff = 10
 
 vim.diagnostic.config({
 	severity_sort = true,
-	jump = { float = true, wrap = true },
+	jump = { on_jump = true, wrap = true },
 	virtual_text = { prefix = "●" },
 	signs = { text = { " ", " ", " ", " " } },
 })
@@ -21,7 +23,11 @@ vim.pack.add({
 	"https://github.com/j-hui/fidget.nvim",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/brenoprata10/nvim-highlight-colors",
+	"https://github.com/RRethy/vim-illuminate",
+	"https://github.com/christoomey/vim-tmux-navigator",
 	"https://github.com/rebelot/kanagawa.nvim",
+	"https://github.com/maxmx03/solarized.nvim",
+	"https://github.com/ellisonleao/gruvbox.nvim",
 })
 
 require("better_escape").setup({})
@@ -92,12 +98,26 @@ require("kanagawa").setup({
 			DiagnosticVirtualTextInfo = blend_bg(theme.diag.info),
 			DiagnosticVirtualTextWarn = blend_bg(theme.diag.warning),
 			DiagnosticVirtualTextError = blend_bg(theme.diag.error),
+			IlluminatedWordText = { link = "LspReferenceText" },
+			IlluminatedWordRead = { link = "LspReferenceRead" },
+			IlluminatedWordWrite = { link = "LspReferenceWrite" },
 		}
 	end,
 })
 
 -- theme
-vim.cmd.colorscheme("kanagawa")
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		if vim.o.background == "dark" then
+			vim.cmd("colorscheme kanagawa")
+		else
+			-- require("gruvbox").setup({ contrast = "soft" })
+			vim.cmd("colorscheme gruvbox")
+			-- vim.cmd("colorscheme solarized")
+		end
+	end,
+})
 
 -- keymaps
 vim.keymap.set("n", "<S-h>", ":bprev<cr>", { desc = "Previous buffer" })
