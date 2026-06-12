@@ -1,16 +1,16 @@
 font-size = 12
 font-family = Input Mono Narrow
-adjust-cell-height = 3
+adjust-cell-height = 4
 
-theme = dark:Kanagawa Dragon,light:Kanagawa Lotus
+theme = dark:Kanagawa Dragon,light:Gruvbox Light
 
 cursor-color = cell-foreground
 cursor-text = cell-background
 
 gtk-titlebar-hide-when-maximized = true
 
-window-width = 80
-window-height = 30
+window-width = 100
+window-height = 40
 
 window-padding-x = 8
 window-padding-y = 8
@@ -18,3 +18,4 @@ window-padding-balance = true
 
 mouse-hide-while-typing
 
+custom-shader = shaders/cursor_warp.glsl 
