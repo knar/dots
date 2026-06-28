@@ -8,7 +8,7 @@ vim.o.scrolloff = 10
 
 vim.diagnostic.config({
     severity_sort = true,
-    jump = { on_jump = true, wrap = true },
+    jump = { float = true, wrap = true },
     virtual_text = { prefix = "●" },
     signs = { text = { " ", " ", " ", " " } },
 })
@@ -26,7 +26,6 @@ vim.pack.add({
     "https://github.com/RRethy/vim-illuminate",
     "https://github.com/christoomey/vim-tmux-navigator",
     "https://github.com/rebelot/kanagawa.nvim",
-    "https://github.com/maxmx03/solarized.nvim",
     "https://github.com/ellisonleao/gruvbox.nvim",
 })
 
@@ -48,6 +47,8 @@ require("mini.pairs").setup({})
 require("mini.pick").setup({})
 require("mini.statusline").setup({})
 require("mini.surround").setup({})
+
+require("nvim-treesitter").install({ "rust", "toml", "lua", "markdown" })
 
 require("blink.cmp").setup({
     keymap = {

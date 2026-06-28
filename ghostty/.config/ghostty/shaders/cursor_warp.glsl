@@ -3,7 +3,7 @@ vec3 sRGBToLinear(vec3 c) {
 }
 
 vec4 TRAIL_COLOR = vec4(sRGBToLinear(iCurrentCursorColor.rgb), iCurrentCursorColor.a); // for custom color: vec4(0.2, 0.6, 1.0, 0.5); (wrap in sRGBToLinear for correct brightness)
-const float DURATION = 0.15;
+const float DURATION = 0.05;
 const float TRAIL_SIZE = 0.8;
 const float THRESHOLD_MIN_DISTANCE = 1.0;
 const float BLUR = 1.0;
