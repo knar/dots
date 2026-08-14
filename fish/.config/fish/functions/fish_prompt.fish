@@ -1,4 +1,8 @@
 function fish_prompt
+    if set -q SSH_CLIENT; or set -q SSH_TTY
+        echo -n '['(prompt_login)'] '
+    end
+
     set -l __last_command_exit_status $status
 
     if not set -q -g __fish_arrow_functions_defined
